@@ -187,3 +187,30 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
     );
   }
 }
+
+class ModernDropdownFieldItem extends StatefulWidget {
+
+  final dynamic value;
+  final Widget child;
+
+  const ModernDropdownFieldItem({
+    Key key,
+    this.value,
+    this.child
+  }) : super(key: key);
+
+  @override
+  _ModernDropdownFieldItemState createState() => _ModernDropdownFieldItemState();
+}
+
+class _ModernDropdownFieldItemState extends State<ModernDropdownFieldItem> {
+
+  
+  @override
+  Widget build(BuildContext context) {
+    return CustomDropdownMenuItem(
+      child: widget.child,
+      value: widget.value,
+    );
+  }
+}

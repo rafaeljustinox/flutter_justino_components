@@ -1,3 +1,7 @@
+## [0.0.7] - 03/25/21
+
+* [new] Added ModernDropdownFieldItem
+
 ## [0.0.6] - 03/25/21
 
 * [new] Added ModernDropdownField
