@@ -1,61 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class ModernTextField extends StatefulWidget {
-  ModernTextField({
-    this.key,
-    this.controller,
-    this.initialValue,
-    this.focusNode,
-    this.keyboardType,
-    this.textInputAction,
-    this.style,
-    this.strutStyle,
-    this.textDirection,
-    this.textAlignVertical,
-    
-    this.toolbarOptions,
-    this.showCursor = true,
-    this.minLines,
-    this.maxLength,
-    this.onChanged,
-    this.onTap,
-    this.onEditingComplete,
-    this.onFieldSubmitted,
-    this.onSaved,
-    this.validator,
-    this.inputFormatters,
-    this.cursorRadius,
-    this.cursorColor,
-    this.keyboardAppearance,
-    this.buildCounter,
-    this.labelText,
-    this.errorText,
-    this.hintText,
-    this.icon,
-    this.prefixIcon,
-    this.suffixIcon,
-    
-    this.autofocus: false,
-    this.readOnly: false,
-    this.obscureText: false,
-    this.autocorrect: true,
-    this.enableSuggestions: true,
-    this.maxLengthEnforced: true,
-    this.autovalidate: false,
-    this.maxLines: 1,
-    this.expands: false,
-    this.enabled: true,
-    this.onSuffixTap,
-    this.scrollPadding: const EdgeInsets.all(20.0),
-    this.textCapitalization: TextCapitalization.none,
+enum ModernTextFieldTheme {
+  dark,
+  light,
+}
 
-  }) : super(key: key);
+class ModernTextField extends StatefulWidget {
 
   final Key key;
   final TextEditingController controller;
   final String initialValue;
   final FocusNode focusNode;
+
+  final FontWeight labelWeight;
+  final FontWeight textWeight;
+  final ModernTextFieldTheme theme;
+
   //final InputDecoration decoration = const InputDecoration();
   final TextInputType keyboardType;
   final TextCapitalization textCapitalization;
@@ -102,6 +63,60 @@ class ModernTextField extends StatefulWidget {
   final Widget suffixIcon;
   final GestureTapCallback onSuffixTap;
 
+  ModernTextField({
+    this.key,
+    this.controller,
+    this.initialValue,
+    this.focusNode,
+    this.keyboardType,
+    this.textInputAction,
+    this.style,
+    this.strutStyle,
+    this.textDirection,
+    this.textAlignVertical,
+
+    this.labelWeight,
+    this.textWeight,
+    this.theme,
+    
+    this.toolbarOptions,
+    this.showCursor = true,
+    this.minLines,
+    this.maxLength,
+    this.onChanged,
+    this.onTap,
+    this.onEditingComplete,
+    this.onFieldSubmitted,
+    this.onSaved,
+    this.validator,
+    this.inputFormatters,
+    this.cursorRadius,
+    this.cursorColor,
+    this.keyboardAppearance,
+    this.buildCounter,
+    this.labelText,
+    this.errorText,
+    this.hintText,
+    this.icon,
+    this.prefixIcon,
+    this.suffixIcon,
+    
+    this.autofocus: false,
+    this.readOnly: false,
+    this.obscureText: false,
+    this.autocorrect: true,
+    this.enableSuggestions: true,
+    this.maxLengthEnforced: true,
+    this.autovalidate: false,
+    this.maxLines: 1,
+    this.expands: false,
+    this.enabled: true,
+    this.onSuffixTap,
+    this.scrollPadding: const EdgeInsets.all(20.0),
+    this.textCapitalization: TextCapitalization.none,
+
+  }) : super(key: key);
+
   @override
   _ModernTextFieldState createState() => _ModernTextFieldState();
 }
@@ -134,7 +149,10 @@ class _ModernTextFieldState extends State<ModernTextField> {
         padding: EdgeInsets.symmetric(vertical: 8.0),
         child: Text(
           widget.labelText,
-          style: Theme.of(context).textTheme.subtitle1
+          style: Theme.of(context).textTheme.subtitle1.copyWith(
+            fontWeight: widget.labelWeight != null ? widget.labelWeight : FontWeight.bold,
+            color: _buildLabelTextColor()
+          )
         ),
       )
     : SizedBox();
@@ -178,6 +196,56 @@ class _ModernTextFieldState extends State<ModernTextField> {
         )
       )
     : null;
+  }
+
+  Color _buildLabelTextColor() {
+
+    if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
+      return Theme.of(context).textTheme.bodyText1.color;
+    } else {
+      return Colors.white;
+    }
+    
+  }
+
+  Color _buildErrorTextColor() {
+
+    if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
+      return Colors.red;
+    } else {
+      return Colors.red.shade100;
+    }
+    
+  }
+
+  Color _buildHintTextColor() {
+
+    if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
+      return Theme.of(context).textTheme.bodyText1.color.withOpacity(0.4);
+    } else {
+      return Colors.white.withOpacity(0.4);
+    }
+    
+  }
+
+  Color _buildTextColor() {
+
+    if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
+      return Theme.of(context).textTheme.bodyText1.color;
+    } else {
+      return Colors.white;
+    }
+
+  }
+
+  Color _buildFillColor() {
+
+    if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
+      return Colors.black.withOpacity(0.05);
+    } else {
+      return Colors.white.withOpacity(0.2);
+    }
+
   }
 
   @override
@@ -232,15 +300,21 @@ class _ModernTextFieldState extends State<ModernTextField> {
               scrollPadding: widget.scrollPadding,
               style: Theme.of(context).textTheme.bodyText1.copyWith(
                 height: 1.4,
+                fontWeight: widget.textWeight != null ? widget.textWeight : FontWeight.normal,
+                color: _buildTextColor()
               ),
               key: widget.key,
               decoration: InputDecoration(
                 hintText: widget.hintText,
                 errorText: widget.errorText,
+                errorStyle: Theme.of(context).textTheme.subtitle2.copyWith(
+                  color: _buildErrorTextColor()
+                ),
                 filled: true,
+                fillColor: _buildFillColor(),
                 contentPadding: _buildPadding(),
                 hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
-                  color: Theme.of(context).primaryColor.withOpacity(0.4)
+                  color:_buildHintTextColor()
                 ),
                 prefixIcon: _buildPrefixIcon(),
                 suffixIcon: _buildSuffixIcon(),

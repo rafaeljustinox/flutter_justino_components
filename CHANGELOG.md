@@ -1,3 +1,7 @@
+## [0.0.5] - 03/25/21
+
+* Added support for dark and light themes for ModernTextField
+
 ## [0.0.4] - 03/25/21
 
 * Fix: Exports HideKeyboardOnTap and StepperCounter

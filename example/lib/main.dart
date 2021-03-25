@@ -34,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Colors.blue,
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -49,6 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ModernTextField(
+                  //theme: ModernTextFieldTheme.dark,
+                  labelText: 'Name',
+                  hintText: 'Your first name',
+                  errorText: 'Error text',
                   icon: Icon(Icons.person_sharp), 
                   controller: null,
                   textInputAction: TextInputAction.next,
@@ -57,6 +62,9 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ModernTextField(
+                  //theme: ModernTextFieldTheme.dark,
+                  labelText: 'Surname',
+                  hintText: 'Your surname',
                   icon: Icon(Icons.lock), 
                   controller: null,
                   textInputAction: TextInputAction.done,

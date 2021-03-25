@@ -1,6 +1,6 @@
 name: justino_components
-description: A new Flutter package project.
-version: 0.0.4
+description: Some basic Flutter components that I use in my projects.
+version: 0.0.5
 homepage: https://github.com/rafaeljustinox/flutter_justino_components
 
 environment:
