@@ -1,3 +1,7 @@
+## [0.0.6] - 03/25/21
+
+* [new] Added ModernDropdownField
+
 ## [0.0.5] - 03/25/21
 
 * Added support for dark and light themes for ModernTextField

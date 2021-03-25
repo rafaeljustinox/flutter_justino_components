@@ -12,6 +12,7 @@ export './src/informative/screen_title.dart';
 export './src/informative/section_title.dart';
 
 export './src/inputs/modern_text_field.dart';
+export './src/inputs/modern_drop_down_field.dart';
 
 export './src/structural/behavior_without_glow.dart';
 export './src/structural/hide_keyboard_on_tap.dart';
