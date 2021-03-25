@@ -43,14 +43,15 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                'Login',
+              SectionTitle(
+                title: 'Login',
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: RoundedTextField(
                   icon: Icon(Icons.person_sharp), 
                   ctr: null,
+                  textInputAction: TextInputAction.next,
                 ),
               ),
               Padding(
@@ -58,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: RoundedTextField(
                   icon: Icon(Icons.lock), 
                   ctr: null,
+                  textInputAction: TextInputAction.done,
                 ),
               ),
               Padding(
