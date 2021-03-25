@@ -10,6 +10,6 @@ export './src/informative/offline_widget.dart';
 export './src/informative/screen_title.dart';
 export './src/informative/section_title.dart';
 
-export './src/inputs/rounded_textfield.dart';
+export './src/inputs/modern_text_field.dart';
 
 export './src/structural/behavior_without_glow.dart';

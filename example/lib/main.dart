@@ -48,17 +48,17 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: RoundedTextField(
+                child: ModernTextField(
                   icon: Icon(Icons.person_sharp), 
-                  ctr: null,
+                  controller: null,
                   textInputAction: TextInputAction.next,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: RoundedTextField(
+                child: ModernTextField(
                   icon: Icon(Icons.lock), 
-                  ctr: null,
+                  controller: null,
                   textInputAction: TextInputAction.done,
                 ),
               ),
