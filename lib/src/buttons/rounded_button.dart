@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 class RoundedButton extends StatelessWidget {
 
-  final ClickCallback onUserClick;
+  final VoidCallback onPressed;
   final String text;
   final Icon icon;
   final BorderRadius _border =  BorderRadius.circular(16.0);
   final Color backgroundColor = Colors.black;
+  final FontWeight fontWeight = FontWeight.normal;
   RoundedButton({
-    @required this.onUserClick,
+    @required this.onPressed,
     @required this.text,
     this.icon,
   });
@@ -28,30 +29,30 @@ class RoundedButton extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: _border,
               ),
-              onPressed: () {
-                onUserClick();
-              },
+              onPressed: onPressed,
+              disabledColor: Theme.of(context).disabledColor,
               icon: icon,
               label: Text(
                 text,
                 style: Theme.of(context).textTheme.button.copyWith(
-                  color: Colors.white
+                  color: Colors.white,
+                  fontWeight: fontWeight
                 )
               ),
             )
             : FlatButton(
               color: Theme.of(context).accentColor,
+              disabledColor: Theme.of(context).disabledColor,
               shape: RoundedRectangleBorder(
                 borderRadius: _border,
                 //side: BorderSide(color: Colors.grey)
               ),
-              onPressed: () {
-                onUserClick();
-              },
+              onPressed: onPressed,
               child: Text(
                 text,
                 style: Theme.of(context).textTheme.button.copyWith(
-                  color: Colors.white
+                  color: Colors.white,
+                  fontWeight: fontWeight
                 )
               ),
             )
