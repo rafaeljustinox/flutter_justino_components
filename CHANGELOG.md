@@ -1,3 +1,7 @@
+## [0.0.8] - 03/25/21
+
+* [new] Added CustomDropdownMenuItem
+
 ## [0.0.7] - 03/25/21
 
 * [new] Added ModernDropdownFieldItem

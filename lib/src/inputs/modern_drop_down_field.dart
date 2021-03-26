@@ -188,29 +188,16 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
   }
 }
 
-class ModernDropdownFieldItem extends StatefulWidget {
+class ModernDropdownFieldItem<T> extends CustomDropdownMenuItem<T> {
 
-  final dynamic value;
-  final Widget child;
+  final T value;
+  final VoidCallback onTap;
 
   const ModernDropdownFieldItem({
     Key key,
+    this.onTap,
     this.value,
-    this.child
-  }) : super(key: key);
-
-  @override
-  _ModernDropdownFieldItemState createState() => _ModernDropdownFieldItemState();
-}
-
-class _ModernDropdownFieldItemState extends State<ModernDropdownFieldItem> {
-
-  
-  @override
-  Widget build(BuildContext context) {
-    return CustomDropdownMenuItem(
-      child: widget.child,
-      value: widget.value,
-    );
-  }
+    @required Widget child,
+  }) : assert(child != null),
+        super(key: key, child: child);
 }
