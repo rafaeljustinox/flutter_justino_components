@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:justino_components/justino_components.dart';
 void main() {
   test('adds one to input values', () {
     final num1 = 1;
