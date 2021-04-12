@@ -36,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage>
   TabController _tabController;
   bool _isPasswordVisible = false;
   int _typeIndex = 0;
+  int _counter = 0;
 
   List<Widget> _tabs = [
     Tab( child: Text('Login') ),
@@ -181,18 +182,28 @@ class _MyHomePageState extends State<MyHomePage>
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ModernTextField(
-                //theme: ModernTextFieldTheme.dark,
-                labelText: 'Name',
-                hintText: 'Your first name',
-                prefixIcon: Icon(Icons.person_sharp), 
-                controller: null,
-                textInputAction: TextInputAction.next,
-              ),
-            )
+              padding: const EdgeInsets.only(top: 16.0),
+              child: SectionTitle(title: 'Stepper Counter'),
+            ),
+            _buildCounter()
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildCounter() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: StepperCounter(
+        color: Colors.pinkAccent,
+        initialValue: 1,
+        min: 1,
+        max: 10,
+        vibrate: true,
+        onChange: (value) => setState((){
+          _counter = value;
+        })
       ),
     );
   }
