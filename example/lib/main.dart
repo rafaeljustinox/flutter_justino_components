@@ -29,66 +29,179 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> 
+  with SingleTickerProviderStateMixin {
+
+  TabController _tabController;
+
+  List<Widget> _tabs = [
+    Tab( child: Text('Tab 1') ),
+    Tab( child: Text('Tab 2') ),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: _tabs.length, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  Widget _buildTabBars() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Container(
+          padding: EdgeInsets.only(left: 12.0),
+          child: TabBar(
+            controller: _tabController,
+            tabs: _tabs,
+            isScrollable: true,
+            indicator: CircleTabIndicator(
+              color: Theme.of(context).primaryColor,
+              radius: 4
+            ),
+            unselectedLabelColor: Theme.of(context).disabledColor,
+            unselectedLabelStyle: 
+              Theme.of(context).textTheme.headline6.copyWith(
+                fontWeight: FontWeight.w900,
+                fontSize: 20.0,
+            ),
+            labelColor: Theme.of(context).primaryColor,
+            labelStyle: Theme.of(context).textTheme.headline6.copyWith(
+              fontWeight: FontWeight.w900,
+              fontSize: 20.0,
+            ),
+          ),    
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFirstTab() {
+    return
+    SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            
+            SectionTitle(
+              title: 'Components Demo',
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ModernTextField(
+                //theme: ModernTextFieldTheme.dark,
+                labelText: 'Name',
+                hintText: 'Your first name',
+                icon: Icon(Icons.person_sharp), 
+                controller: null,
+                textInputAction: TextInputAction.next,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ModernTextField(
+                //theme: ModernTextFieldTheme.dark,
+                labelText: 'Surname',
+                hintText: 'Your surname',
+                icon: Icon(Icons.lock), 
+                controller: null,
+                textInputAction: TextInputAction.done,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RoundedButton(
+                onPressed: () => print('Clicked'),
+                text: 'Test',
+                icon: Icon(
+                  Icons.access_alarm_sharp,
+                  color: Colors.white,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSecondTab() {
+    return
+    SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            PageTitle(title: 'Components'),
+            SectionTitle(
+              title: 'Components Demo',
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ModernTextField(
+                //theme: ModernTextFieldTheme.dark,
+                labelText: 'Name',
+                hintText: 'Your first name',
+                icon: Icon(Icons.person_sharp), 
+                controller: null,
+                textInputAction: TextInputAction.next,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.blue,
       appBar: AppBar(
-        title: Text(widget.title),
+        elevation: 0.0,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SectionTitle(
-                title: 'Login',
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ModernTextField(
-                  //theme: ModernTextFieldTheme.dark,
-                  labelText: 'Name',
-                  hintText: 'Your first name',
-                  errorText: 'Error text',
-                  icon: Icon(Icons.person_sharp), 
-                  controller: null,
-                  textInputAction: TextInputAction.next,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ModernTextField(
-                  //theme: ModernTextFieldTheme.dark,
-                  labelText: 'Surname',
-                  hintText: 'Your surname',
-                  icon: Icon(Icons.lock), 
-                  controller: null,
-                  textInputAction: TextInputAction.done,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RoundedButton(
-                  onUserClick: () => print('Clicked'),
-                  text: 'Test',
-                  icon: Icon(
-                    Icons.access_alarm_sharp,
-                    color: Colors.white,
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => print('Hello World'),
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+      body: Stack(
+        children: [
+          ScrollConfiguration(
+            behavior: BehaviorWithoutGlow(),
+            child: CustomScrollView(
+              physics: NeverScrollableScrollPhysics(),
+              slivers: [
+                SliverFillRemaining(
+                  child: IntrinsicHeight(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        PageTitle(title: 'Components'),
+                        _buildTabBars(),
+                        Expanded(
+                          child: TabBarView(
+                            controller: _tabController,
+                            children: [
+                              _buildFirstTab(),
+                              _buildSecondTab(),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                )
+              ],
+            )
+          )
+        ],
       ),
     );
   }

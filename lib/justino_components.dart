@@ -8,7 +8,7 @@ export './src/buttons/stepper_counter.dart';
 
 export './src/informative/my_snack_bar.dart';
 export './src/informative/offline_widget.dart';
-export './src/informative/screen_title.dart';
+export 'src/informative/page_title.dart';
 export './src/informative/section_title.dart';
 
 export './src/inputs/modern_text_field.dart';
@@ -17,3 +17,6 @@ export './src/inputs/custom_drop_down.dart';
 
 export './src/structural/behavior_without_glow.dart';
 export './src/structural/hide_keyboard_on_tap.dart';
+
+export './src/misc/circle_tab_indicator.dart';
+export './src/structural/behavior_without_glow.dart';
