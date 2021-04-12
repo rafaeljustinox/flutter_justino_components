@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import '../enums.dart';
 
-class MySnackBar extends SnackBar {
+class ModernSnackbar extends SnackBar {
   
   static create(
     String title,
     String body,
-    String type,
+    ModernSnackbarType type,
     BuildContext context,
     { Duration duration : const Duration(seconds: 4) }) {
 
     Color color;
-    if ( type == 'info' ) color = Colors.lightBlue.shade200;
-    if ( type == 'warning' ) color = Colors.yellowAccent.shade700;
-    if ( type == 'error' ) color = Colors.pinkAccent.shade200;
+    if ( type == ModernSnackbarType.info ) color = Colors.lightBlue.shade200;
+    if ( type == ModernSnackbarType.warning ) color = Colors.yellowAccent.shade700;
+    if ( type == ModernSnackbarType.error ) color = Colors.pinkAccent.shade200;
 
     return  SnackBar(
       backgroundColor: Colors.black,
@@ -59,12 +60,20 @@ class MySnackBar extends SnackBar {
     GlobalKey<ScaffoldState> key,
     String title,
     String body,
-    String type,
-    { Duration duration : const Duration(seconds: 4) }) {
+    {
+      ModernSnackbarType type : ModernSnackbarType.info,
+      Duration duration : const Duration(seconds: 4) 
+    }) {
     
     if ( key != null ) {
       key.currentState.showSnackBar(
-        MySnackBar.create(title, body, type, key.currentContext, duration: duration)
+        ModernSnackbar.create(
+          title,
+          body,
+          type,
+          key.currentContext,
+          duration: duration
+        )
       );
     } else {
       print('Snackbar não foi mostrada pois a chave do Scaffold não foi informada');

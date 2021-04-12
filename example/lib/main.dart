@@ -31,11 +31,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> 
   with SingleTickerProviderStateMixin {
-
+  
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   TabController _tabController;
+  bool _isPasswordVisible = false;
+
 
   List<Widget> _tabs = [
-    Tab( child: Text('Tab 1') ),
+    Tab( child: Text('Login') ),
     Tab( child: Text('Tab 2') ),
   ];
 
@@ -49,6 +52,19 @@ class _MyHomePageState extends State<MyHomePage>
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  void _showSnackbar() {
+    String title = 'Snackbar Demo';
+    String message = 'Press again to test other snackbars colors';
+    ModernSnackbarType type = ModernSnackbarType.info;
+
+    ModernSnackbar.show(
+      _scaffoldKey,
+      title,
+      message,
+      type: type
+    );
   }
 
   Widget _buildTabBars() {
@@ -91,17 +107,13 @@ class _MyHomePageState extends State<MyHomePage>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            
-            SectionTitle(
-              title: 'Components Demo',
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ModernTextField(
                 //theme: ModernTextFieldTheme.dark,
                 labelText: 'Name',
                 hintText: 'Your first name',
-                icon: Icon(Icons.person_sharp), 
+                prefixIcon: Icon(Icons.person_sharp), 
                 controller: null,
                 textInputAction: TextInputAction.next,
               ),
@@ -110,20 +122,37 @@ class _MyHomePageState extends State<MyHomePage>
               padding: const EdgeInsets.all(8.0),
               child: ModernTextField(
                 //theme: ModernTextFieldTheme.dark,
-                labelText: 'Surname',
-                hintText: 'Your surname',
-                icon: Icon(Icons.lock), 
+                labelText: 'Password',
+                hintText: 'Your password',
+                prefixIcon: Icon(Icons.lock),
                 controller: null,
                 textInputAction: TextInputAction.done,
+                obscureText: _isPasswordVisible,
+                onSuffixTap: () => setState(() {
+                  _isPasswordVisible = !_isPasswordVisible;
+                }),
+                suffixIcon: _isPasswordVisible
+                ? Icon(
+                    Icons.visibility,
+                    color: Colors.grey,
+                  )
+                : Icon(
+                    Icons.visibility_off,
+                    color: Colors.grey,
+                  ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(
+                vertical: 22.0,
+                horizontal: 8.0
+              ),
               child: RoundedButton(
-                onPressed: () => print('Clicked'),
-                text: 'Test',
+                onPressed: () => _showSnackbar(),
+                text: 'Test Snackbar',
+                fontWeight: FontWeight.bold,
                 icon: Icon(
-                  Icons.access_alarm_sharp,
+                  Icons.notifications,
                   color: Colors.white,
                 ),
               ),
@@ -142,17 +171,13 @@ class _MyHomePageState extends State<MyHomePage>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            PageTitle(title: 'Components'),
-            SectionTitle(
-              title: 'Components Demo',
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ModernTextField(
                 //theme: ModernTextFieldTheme.dark,
                 labelText: 'Name',
                 hintText: 'Your first name',
-                icon: Icon(Icons.person_sharp), 
+                prefixIcon: Icon(Icons.person_sharp), 
                 controller: null,
                 textInputAction: TextInputAction.next,
               ),
@@ -166,6 +191,7 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -183,7 +209,11 @@ class _MyHomePageState extends State<MyHomePage>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        PageTitle(title: 'Components'),
+                        PageTitle(
+                          title: 'Components',
+                          fontWeight: FontWeight.bold,
+                          //color: Colors.black,
+                        ),
                         _buildTabBars(),
                         Expanded(
                           child: TabBarView(

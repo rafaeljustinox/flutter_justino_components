@@ -6,12 +6,14 @@ class RoundedButton extends StatelessWidget {
   final String text;
   final Icon icon;
   final BorderRadius _border =  BorderRadius.circular(16.0);
-  final Color backgroundColor = Colors.black;
-  final FontWeight fontWeight = FontWeight.normal;
+  final Color backgroundColor;
+  final FontWeight fontWeight;
   RoundedButton({
     @required this.onPressed,
     @required this.text,
     this.icon,
+    this.backgroundColor,
+    this.fontWeight
   });
 
   @override

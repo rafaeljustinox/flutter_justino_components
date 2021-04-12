@@ -58,7 +58,6 @@ class ModernTextField extends StatefulWidget {
   final String labelText;
   final String errorText;
   final String hintText;
-  final Icon icon;
   final Widget prefixIcon;
   final Widget suffixIcon;
   final GestureTapCallback onSuffixTap;
@@ -97,7 +96,6 @@ class ModernTextField extends StatefulWidget {
     this.labelText,
     this.errorText,
     this.hintText,
-    this.icon,
     this.prefixIcon,
     this.suffixIcon,
     
