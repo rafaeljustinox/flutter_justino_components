@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage>
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   TabController _tabController;
   bool _isPasswordVisible = false;
-
+  int _typeIndex = 0;
 
   List<Widget> _tabs = [
     Tab( child: Text('Login') ),
@@ -57,7 +57,8 @@ class _MyHomePageState extends State<MyHomePage>
   void _showSnackbar() {
     String title = 'Snackbar Demo';
     String message = 'Press again to test other snackbars colors';
-    ModernSnackbarType type = ModernSnackbarType.info;
+    print(_typeIndex);
+    ModernSnackbarType type = ModernSnackbarType.values[_typeIndex];
 
     ModernSnackbar.show(
       _scaffoldKey,
@@ -65,6 +66,14 @@ class _MyHomePageState extends State<MyHomePage>
       message,
       type: type
     );
+
+    setState(() {
+      if (_typeIndex == ModernSnackbarType.values.length - 1) {
+        _typeIndex = 0;
+      } else {
+        _typeIndex++;
+      }
+    });
   }
 
   Widget _buildTabBars() {
