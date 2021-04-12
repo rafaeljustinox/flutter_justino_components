@@ -101,8 +101,7 @@ class _StepperCounterState extends State<StepperCounter> {
 
     if (action == StepperAction.decrease) {
       return _canDecrease ? _decrease : null;
-    }
-    if (action == StepperAction.increase) {
+    } else {
       return _canIncrease ? _increase : null;
     }
   }

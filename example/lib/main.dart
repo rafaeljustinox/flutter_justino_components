@@ -36,7 +36,6 @@ class _MyHomePageState extends State<MyHomePage>
   TabController _tabController;
   bool _isPasswordVisible = false;
   int _typeIndex = 0;
-  int _counter = 0;
 
   List<Widget> _tabs = [
     Tab( child: Text('Login') ),
@@ -202,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage>
         max: 10,
         vibrate: true,
         onChange: (value) => setState((){
-          _counter = value;
+          print('Stepper Counter: $value');
         })
       ),
     );
