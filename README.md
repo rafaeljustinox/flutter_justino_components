@@ -11,8 +11,7 @@ A pack with some fancy widgets like buttons, textfields, counters, snackbars and
 
 ### Buttons
 * Rounded Button
-* Corner Floating Action Button
-* Bottom Button
+* Corner Button
 
 ### Misc
 * Tab Bar
