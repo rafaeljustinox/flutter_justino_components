@@ -36,11 +36,26 @@ class _MyHomePageState extends State<MyHomePage>
   TabController _tabController;
   bool _isPasswordVisible = false;
   int _typeIndex = 0;
+  List<String> _dropdownOptions = [
+    'Option A',
+    'Option B',
+    'Option C',
+    'Option D',
+    'Option E',
+    'Option F',
+    'Option G',
+  ];
+
+  String _selectedOption = '';
 
   List<Widget> _tabs = [
-    Tab( child: Text('Login') ),
-    Tab( child: Text('Tab 2') ),
+    Tab(child: Text('Inputs')),
+    Tab(child: Text('Buttons')),
+    Tab(child: Text('Snackbar')),
   ];
+
+  bool _isFabExpanded = true;
+  bool _isFabVisible = true;
 
   @override
   void initState() {
@@ -108,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage>
     );
   }
 
-  Widget _buildFirstTab() {
+  Widget _buildInputsTab() {
     return
     SingleChildScrollView(
       child: Padding(
@@ -151,20 +166,39 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
               ),
             ),
+            
             Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 22.0,
-                horizontal: 8.0
-              ),
-              child: RoundedButton(
-                onPressed: () => _showSnackbar(),
-                text: 'Test Snackbar',
-                fontWeight: FontWeight.bold,
-                icon: Icon(
-                  Icons.notifications,
-                  color: Colors.white,
+              padding: const EdgeInsets.all(8.0),
+              child: ModernDropdownField(
+                hintText: 'Selecione uma empresa',
+                prefixIcon: Icon(
+                  Icons.place,
                 ),
+                initialValue: _dropdownOptions[0],
+                items: _dropdownOptions.map((String option) {
+                  return ModernDropdownFieldItem<String>(
+                    value: option,
+                    child: Text(option),
+                  );
+                }).toList(),
+                onChanged: (updatedOption) {
+                  setState(() {
+                    _selectedOption = updatedOption;
+                  });
+                },
+                labelText: 'Options',
+                labelWeight: FontWeight.bold,
+                textWeight: FontWeight.bold,
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: SectionTitle(title: 'Counter'),
+            ),
+            _buildCounter(),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Text('Hold to increase or decrease faster'),
             )
           ],
         ),
@@ -172,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage>
     );
   }
 
-  Widget _buildSecondTab() {
+  Widget _buildButtonsTab() {
     return
     SingleChildScrollView(
       child: Padding(
@@ -181,11 +215,73 @@ class _MyHomePageState extends State<MyHomePage>
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: SectionTitle(title: 'Stepper Counter'),
+              padding: const EdgeInsets.symmetric(
+                vertical: 22.0,
+                horizontal: 8.0
+              ),
+              child: ModernButton(
+                onPressed: () => setState((){
+                  _isFabExpanded = !_isFabExpanded;
+                }),
+                text: _isFabExpanded 
+                  ? 'Collapse Corner Button'
+                  : 'Expand Corner Button',
+                fontWeight: FontWeight.bold,
+                icon: Icon(
+                  _isFabExpanded
+                  ? Icons.arrow_forward_rounded
+                  : Icons.arrow_back_rounded,
+                  color: Colors.white,
+                ),
+              ),
             ),
-            _buildCounter()
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 22.0,
+                horizontal: 8.0
+              ),
+              child: ModernButton(
+                onPressed: () => setState((){
+                  _isFabVisible = !_isFabVisible;
+                }),
+                text: _isFabVisible 
+                  ? 'Hide Corner Button'
+                  : 'Show Corner Button',
+                fontWeight: FontWeight.bold,
+                icon: Icon(
+                  _isFabVisible 
+                  ? Icons.visibility
+                  : Icons.visibility_off,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSnackbarTab() {
+    return
+    Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 22.0,
+            horizontal: 8.0
+          ),
+          child: ModernButton(
+            onPressed: () => _showSnackbar(),
+            text: 'Test Snackbar',
+            fontWeight: FontWeight.bold,
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );
@@ -194,7 +290,7 @@ class _MyHomePageState extends State<MyHomePage>
   Widget _buildCounter() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: StepperCounter(
+      child: Counter(
         color: Colors.pinkAccent,
         initialValue: 1,
         min: 1,
@@ -206,51 +302,78 @@ class _MyHomePageState extends State<MyHomePage>
       ),
     );
   }
- 
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      ),
-      body: Stack(
-        children: [
-          ScrollConfiguration(
-            behavior: BehaviorWithoutGlow(),
-            child: CustomScrollView(
-              physics: NeverScrollableScrollPhysics(),
-              slivers: [
-                SliverFillRemaining(
-                  child: IntrinsicHeight(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        PageTitle(
-                          title: 'Components',
-                          fontWeight: FontWeight.bold,
-                          //color: Colors.black,
-                        ),
-                        _buildTabBars(),
-                        Expanded(
-                          child: TabBarView(
-                            controller: _tabController,
-                            children: [
-                              _buildFirstTab(),
-                              _buildSecondTab(),
-                            ],
+    return HideKeyboardOnTap(
+      child: Scaffold(
+        key: _scaffoldKey,
+        appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        ),
+        body: Stack(
+          children: [
+            ScrollConfiguration(
+              behavior: BehaviorWithoutGlow(),
+              child: CustomScrollView(
+                physics: NeverScrollableScrollPhysics(),
+                slivers: [
+                  SliverFillRemaining(
+                    child: IntrinsicHeight(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          PageTitle(
+                            title: 'Components',
+                            fontWeight: FontWeight.bold,
                           ),
-                        )
-                      ],
-                    ),
+                          _buildTabBars(),
+                          Expanded(
+                            child: TabBarView(
+                              controller: _tabController,
+                              children: [
+                                _buildInputsTab(),
+                                _buildButtonsTab(),
+                                _buildSnackbarTab()
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    )
                   )
+                ],
+              )
+            ),
+            CornerButton(
+              isVisible: _isFabVisible,
+              isExpanded: _isFabExpanded,
+              onPressed: () => print('Corner Button pressed'),
+              collapsedContent: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(
+                    Icons.arrow_forward_rounded,
+                    color: Colors.white,
+                    size: 28.0
+                  ),
+                  SizedBox(
+                    width: 35.0,
+                  )
+                ],
+              ),
+              expandedContent: Text(
+                'Confirm',
+                style: Theme.of(context).textTheme.button.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold
                 )
-              ],
+              ),            
             )
-          )
-        ],
+          ],
+        ),
       ),
     );
   }

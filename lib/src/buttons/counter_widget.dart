@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-enum StepperAction {
+enum CounterAction {
   decrease,
   increase
 }
 
-class StepperCounter extends StatefulWidget {
+class Counter extends StatefulWidget {
   final Function onChange;
   final int initialValue;
   final int min;
@@ -14,7 +14,7 @@ class StepperCounter extends StatefulWidget {
   final bool vibrate;
   final Color color;
 
-  const StepperCounter({
+  const Counter({
     Key key,
     @required this.onChange,
     @required this.initialValue,
@@ -25,7 +25,7 @@ class StepperCounter extends StatefulWidget {
   }) : super(key: key);
   
   @override
-  _StepperCounterState createState() => _StepperCounterState(
+  _CounterState createState() => _CounterState(
     color: this.color,
     initialValue: this.initialValue,
     min: this.min,
@@ -34,9 +34,9 @@ class StepperCounter extends StatefulWidget {
   );
 }
 
-class _StepperCounterState extends State<StepperCounter> {
+class _CounterState extends State<Counter> {
 
-  _StepperCounterState({
+  _CounterState({
     this.initialValue,
     this.min,
     this.max,
@@ -79,14 +79,14 @@ class _StepperCounterState extends State<StepperCounter> {
     }
   }
 
-  void _onLongPressStart(StepperAction action) async {
+  void _onLongPressStart(CounterAction action) async {
     setState(() {
       _isLongPressing = true;
     });
     do {
-      if (action == StepperAction.increase) {
+      if (action == CounterAction.increase) {
         _increase();
-      } else if (action == StepperAction.decrease) {
+      } else if (action == CounterAction.decrease) {
         _decrease();
       }
       await Future.delayed(Duration(milliseconds: 70));
@@ -97,25 +97,25 @@ class _StepperCounterState extends State<StepperCounter> {
     setState(() => _isLongPressing = false);
   }
 
-  Function _handleActionPressed(StepperAction action) {
+  Function _handleActionPressed(CounterAction action) {
 
-    if (action == StepperAction.decrease) {
+    if (action == CounterAction.decrease) {
       return _canDecrease ? _decrease : null;
     } else {
       return _canIncrease ? _increase : null;
     }
   }
 
-  Widget _buildActionIcon(StepperAction action) {
+  Widget _buildActionIcon(CounterAction action) {
 
-    if (action == StepperAction.decrease) {
+    if (action == CounterAction.decrease) {
       return Icon(
         //Icons.navigate_before,
         Icons.remove,
         color: Colors.white,
         size: 28.0,
       );
-    } else if (action == StepperAction.increase) {
+    } else if (action == CounterAction.increase) {
       return Icon(
         //Icons.navigate_before,
         Icons.add,
@@ -134,14 +134,14 @@ class _StepperCounterState extends State<StepperCounter> {
   Widget _buildCounterCard() {
     return Card(
       child: ListTile(
-        leading: _buildActionButton(StepperAction.decrease),
+        leading: _buildActionButton(CounterAction.decrease),
         title: _buildCounterDisplay(),
-        trailing: _buildActionButton(StepperAction.increase),
+        trailing: _buildActionButton(CounterAction.increase),
       ),
     );
   }
 
-  Widget _buildActionButton(StepperAction action) {
+  Widget _buildActionButton(CounterAction action) {
     return GestureDetector(
       onLongPressStart: (_) => _onLongPressStart(action),
       onLongPressEnd: (_) => _onLongPressEnd(),
@@ -198,9 +198,9 @@ class _StepperCounterState extends State<StepperCounter> {
       child: ButtonBar(
         alignment: MainAxisAlignment.center,
         children: [
-          _buildActionButton(StepperAction.decrease),
+          _buildActionButton(CounterAction.decrease),
           _buildCounterDisplay(),
-          _buildActionButton(StepperAction.increase)
+          _buildActionButton(CounterAction.increase)
         ],
       )
     );

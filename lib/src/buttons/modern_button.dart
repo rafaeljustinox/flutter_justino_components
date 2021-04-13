@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class RoundedButton extends StatelessWidget {
+class ModernButton extends StatelessWidget {
 
   final VoidCallback onPressed;
   final String text;
@@ -8,7 +8,7 @@ class RoundedButton extends StatelessWidget {
   final BorderRadius _border =  BorderRadius.circular(16.0);
   final Color backgroundColor;
   final FontWeight fontWeight;
-  RoundedButton({
+  ModernButton({
     @required this.onPressed,
     @required this.text,
     this.icon,
