@@ -54,8 +54,8 @@ class _MyHomePageState extends State<MyHomePage>
     Tab(child: Text('Snackbar')),
   ];
 
-  bool _isFabExpanded = true;
-  bool _isFabVisible = true;
+  bool _isFabExpanded = false;
+  bool _isFabVisible = false;
 
   @override
   void initState() {
