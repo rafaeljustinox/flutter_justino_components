@@ -1,3 +1,7 @@
+## [0.1.5]
+
+* Removed unused CarouselOptions
+
 ## [0.1.4]
 
 * Some fixes

@@ -25,7 +25,7 @@ export 'src/inputs/custom_drop_down.dart';
 export 'src/inputs/modern_drop_down_field.dart';
 export 'src/inputs/modern_text_field.dart';
 
-export 'src/misc/carousel_options.dart';
+//export 'src/misc/carousel_options.dart';
 export 'src/misc/fade_route.dart';
 
 export 'src/structural/behavior_without_glow.dart';
