@@ -99,7 +99,7 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
     : SizedBox();
   }
 
-  Color _buildFillColor() {
+  /* Color _buildFillColor() {
 
     if (widget.theme == null || widget.theme == ModernDropdownFieldTheme.light) {
       return Colors.black.withOpacity(0.05);
@@ -107,7 +107,7 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
       return Colors.white.withOpacity(0.2);
     }
 
-  }
+  } */
 
   Color _buildTextColor() {
 

@@ -236,7 +236,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
 
   }
 
-  Color _buildFillColor() {
+  /* Color _buildFillColor() {
 
     if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
       return Colors.black.withOpacity(0.05);
@@ -244,7 +244,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
       return Colors.white.withOpacity(0.2);
     }
 
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {

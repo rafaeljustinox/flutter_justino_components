@@ -131,7 +131,7 @@ class _CounterState extends State<Counter> {
     }
   }
 
-  Widget _buildCounterCard() {
+  /* Widget _buildCounterCard() {
     return Card(
       child: ListTile(
         leading: _buildActionButton(CounterAction.decrease),
@@ -139,7 +139,7 @@ class _CounterState extends State<Counter> {
         trailing: _buildActionButton(CounterAction.increase),
       ),
     );
-  }
+  } */
 
   Widget _buildActionButton(CounterAction action) {
     return GestureDetector(
