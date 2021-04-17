@@ -41,9 +41,6 @@ class _MyHomePageState extends State<MyHomePage>
     'Option B',
     'Option C',
     'Option D',
-    'Option E',
-    'Option F',
-    'Option G',
   ];
 
   String _selectedOption = '';
@@ -170,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage>
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ModernDropdownField(
-                hintText: 'Selecione uma empresa',
+                hintText: 'Select one option',
                 prefixIcon: Icon(
                   Icons.place,
                 ),
