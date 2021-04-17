@@ -2,12 +2,12 @@ library justino_components;
 
 export './src/enums.dart';
 
-export 'src/buttons/modern_button.dart';
+export './src/buttons/modern_button.dart';
 
 export './src/buttons/bottom_button_widget.dart';
 export './src/buttons/corner_floating_action_button.dart';
 export './src/buttons/corner_button.dart';
-export 'src/buttons/counter_widget.dart';
+export './src/buttons/counter_widget.dart';
 
 export './src/informative/modern_snackbar.dart';
 export './src/informative/offline_widget.dart';
