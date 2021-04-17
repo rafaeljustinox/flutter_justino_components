@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Justino Components Demo',
+      title: 'Justino Components',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage>
   with SingleTickerProviderStateMixin {
   
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  TabController _tabController;
+  TabController? _tabController;
   bool _isPasswordVisible = false;
   int _typeIndex = 0;
   List<String> _dropdownOptions = [
@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage>
   ];
 
   // ignore: unused_field
-  String _selectedOption = '';
+  String? _selectedOption = '';
 
   List<Widget> _tabs = [
     Tab(child: Text('Inputs')),
@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   void dispose() {
-    _tabController.dispose();
+    _tabController!.dispose();
     super.dispose();
   }
 
@@ -106,12 +106,12 @@ class _MyHomePageState extends State<MyHomePage>
             ),
             unselectedLabelColor: Theme.of(context).disabledColor,
             unselectedLabelStyle: 
-              Theme.of(context).textTheme.headline6.copyWith(
+              Theme.of(context).textTheme.headline6!.copyWith(
                 fontWeight: FontWeight.w900,
                 fontSize: 20.0,
             ),
             labelColor: Theme.of(context).primaryColor,
-            labelStyle: Theme.of(context).textTheme.headline6.copyWith(
+            labelStyle: Theme.of(context).textTheme.headline6!.copyWith(
               fontWeight: FontWeight.w900,
               fontSize: 20.0,
             ),
@@ -369,7 +369,7 @@ class _MyHomePageState extends State<MyHomePage>
               ),
               expandedContent: Text(
                 'Confirm',
-                style: Theme.of(context).textTheme.button.copyWith(
+                style: Theme.of(context).textTheme.button!.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.bold
                 )
