@@ -1,5 +1,6 @@
 ## 0.1.6-null-safety 
 
+* Migrate do null-safety
 
 ## [0.1.5]
 
