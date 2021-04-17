@@ -19,9 +19,9 @@ class CardItem extends StatefulWidget  {
 class _CardItemState extends State<CardItem> with SingleTickerProviderStateMixin {
 
   _CardItemState({
-    @required this.animation,
+    this.animation,
     this.onTap,
-    @required this.item,
+    this.item,
     this.selected: false}
   )
   : assert(animation != null),

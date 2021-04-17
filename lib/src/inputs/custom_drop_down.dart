@@ -94,11 +94,11 @@ class _DropdownScrollBehavior extends ScrollBehavior {
 class _DropdownMenuItemButton<T> extends StatefulWidget {
   const _DropdownMenuItemButton({
     Key key,
-    @required this.padding,
-    @required this.route,
-    @required this.buttonRect,
-    @required this.constraints,
-    @required this.itemIndex,
+    this.padding,
+    this.route,
+    this.buttonRect,
+    this.constraints,
+    this.itemIndex,
   }) : super(key: key);
 
   final _DropdownRoute<T> route;
@@ -293,9 +293,9 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
 
 class _DropdownMenuRouteLayout<T> extends SingleChildLayoutDelegate {
   _DropdownMenuRouteLayout({
-    @required this.buttonRect,
-    @required this.route,
-    @required this.textDirection,
+    this.buttonRect,
+    this.route,
+    this.textDirection,
   });
 
   final Rect buttonRect;
@@ -358,7 +358,7 @@ class _DropdownMenuRouteLayout<T> extends SingleChildLayoutDelegate {
 // We box the return value so that the return value can be null. Otherwise,
 // canceling the route (which returns null) would get confused with actually
 // returning a real null value.
-@immutable
+//@immutable
 class _DropdownRouteResult<T> {
   const _DropdownRouteResult(this.result);
 
@@ -390,7 +390,7 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
     this.selectedIndex,
     this.elevation = 8,
     this.theme,
-    @required this.style,
+    this.style,
     this.barrierLabel,
     this.itemHeight,
     this.dropdownColor,
@@ -594,8 +594,8 @@ class _DropdownRoutePage<T> extends StatelessWidget {
 class _MenuItem<T> extends SingleChildRenderObjectWidget {
   const _MenuItem({
     Key key,
-    @required this.onLayout,
-    @required this.item,
+    this.onLayout,
+    this.item,
   }) : assert(onLayout != null), super(key: key, child: item);
 
   final ValueChanged<Size> onLayout;
@@ -633,7 +633,7 @@ class _DropdownMenuItemContainer extends StatelessWidget {
   /// The [child] argument is required.
   const _DropdownMenuItemContainer({
     Key key,
-    @required this.child,
+    this.child,
   }) : assert(child != null),
         super(key: key);
 
@@ -664,7 +664,7 @@ class CustomDropdownMenuItem<T> extends _DropdownMenuItemContainer {
     Key key,
     this.onTap,
     this.value,
-    @required Widget child,
+    Widget child,
   }) : assert(child != null),
         super(key: key, child: child);
 
@@ -688,7 +688,7 @@ class CustomDropdownButtonHideUnderline extends InheritedWidget {
   /// be given.
   const CustomDropdownButtonHideUnderline({
     Key key,
-    @required Widget child,
+    Widget child,
   }) : assert(child != null),
         super(key: key, child: child);
 
@@ -774,7 +774,7 @@ class CustomDropdownButtonHideUnderline extends InheritedWidget {
 ///  * [CustomDropdownMenuItem], the class used to represent the [items].
 ///  * [CustomDropdownButtonHideUnderline], which prevents its descendant dropdown buttons
 ///    from displaying their underlines.
-///  * [RaisedButton], [FlatButton], ordinary buttons that trigger a single action.
+///  * [ElevatedButton], [TextButton], ordinary buttons that trigger a single action.
 ///  * <https://material.io/design/components/menus.html#dropdown-menu>
 class CustomDropdownButton<T> extends StatefulWidget {
   /// Creates a dropdown button.
@@ -797,12 +797,12 @@ class CustomDropdownButton<T> extends StatefulWidget {
   /// [ThemeData.canvasColor] will be used instead.
   CustomDropdownButton({
     Key key,
-    @required this.items,
+    this.items,
     this.selectedItemBuilder,
     this.value,
     this.hint,
     this.disabledHint,
-    @required this.onChanged,
+    this.onChanged,
     this.onTap,
     this.elevation = 8,
     this.style,
@@ -1174,9 +1174,10 @@ class _DropdownButtonState<T> extends State<CustomDropdownButton<T>> with Widget
         ? _kAlignedMenuMargin
         : _kUnalignedMenuMargin;
 
-    final List<_MenuItem<T>> menuItems = List<_MenuItem<T>>(widget.items.length);
+    final List<_MenuItem<T>> menuItems = [];
+
     for (int index = 0; index < widget.items.length; index += 1) {
-      menuItems[index] = _MenuItem<T>(
+      menuItems.add( _MenuItem<T>(
         item: widget.items[index],
         onLayout: (Size size) {
           // If [_dropdownRoute] is null and onLayout is called, this means
@@ -1192,7 +1193,8 @@ class _DropdownButtonState<T> extends State<CustomDropdownButton<T>> with Widget
 
           _dropdownRoute.itemHeights[index] = size.height;
         },
-      );
+
+      ));
     }
 
     assert(_dropdownRoute == null);
@@ -1434,12 +1436,12 @@ class CustomDropdownButtonFormField<T> extends FormField<T> {
   /// `autofocus`, and `decoration`  parameters must not be null.
   CustomDropdownButtonFormField({
     Key key,
-    @required List<CustomDropdownMenuItem<T>> items,
+    List<CustomDropdownMenuItem<T>> items,
     DropdownButtonBuilder selectedItemBuilder,
     T value,
     Widget hint,
     Widget disabledHint,
-    @required this.onChanged,
+    this.onChanged,
     VoidCallback onTap,
     int elevation = 8,
     TextStyle style,

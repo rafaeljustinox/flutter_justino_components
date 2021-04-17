@@ -196,7 +196,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    var items = List<Widget>();
+    var items = List.empty();
     if (widget.leading != null) {
       items.add(widget.leading);
     }

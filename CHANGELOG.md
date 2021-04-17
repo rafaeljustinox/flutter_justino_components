@@ -1,3 +1,6 @@
+## [0.1.6] Null-safety
+
+
 ## [0.1.5]
 
 * Removed unused CarouselOptions

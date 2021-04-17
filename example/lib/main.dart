@@ -43,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage>
     'Option D',
   ];
 
+  // ignore: unused_field
   String _selectedOption = '';
 
   List<Widget> _tabs = [
@@ -73,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage>
     ModernSnackbarType type = ModernSnackbarType.values[_typeIndex];
 
     ModernSnackbar.show(
-      _scaffoldKey,
+      context,
       title,
       message,
       type: type

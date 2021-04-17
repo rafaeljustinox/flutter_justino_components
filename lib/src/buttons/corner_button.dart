@@ -13,9 +13,9 @@ class CornerButton extends StatefulWidget {
     this.heroTag,
     this.isExpanded = false,
     this.isVisible = true,
-    @required this.onPressed,
-    @required this.expandedContent,
-    @required this.collapsedContent,
+    this.onPressed,
+    this.expandedContent,
+    this.collapsedContent,
   }) : super(key: key);
 
   @override

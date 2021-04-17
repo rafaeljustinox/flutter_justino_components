@@ -11,7 +11,7 @@ export 'src/buttons/squared_fab_widget.dart';
 export 'src/cards/card_item.dart';
 
 export 'src/indicators/circle_tab_indicator.dart';
-export 'src/indicators/circular_percent_indicator.dart';
+//export 'src/indicators/circular_percent_indicator.dart';
 export 'src/indicators/linear_percent_indicator.dart';
 export 'src/indicators/loading_indicator.dart';
 

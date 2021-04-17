@@ -27,7 +27,7 @@ class OfflineWidget extends StatelessWidget {
                 'Você está offline. Verifique sua conexão',
                 style: Theme.of(context).textTheme.bodyText2
               ),
-              FlatButton(
+              TextButton(
                 onPressed: onPressed != null ? onPressed : (){},
                 child: Text(
                   'Tentar novamente',

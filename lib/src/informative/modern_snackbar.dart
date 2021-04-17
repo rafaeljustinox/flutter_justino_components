@@ -57,7 +57,7 @@ class ModernSnackbar extends SnackBar {
   }
 
   static show(
-    GlobalKey<ScaffoldState> key,
+    BuildContext context,
     String title,
     String body,
     {
@@ -65,13 +65,13 @@ class ModernSnackbar extends SnackBar {
       Duration duration : const Duration(seconds: 4) 
     }) {
     
-    if ( key != null ) {
-      key.currentState.showSnackBar(
+    if ( context != null ) {
+      ScaffoldMessenger.of(context).showSnackBar(
         ModernSnackbar.create(
           title,
           body,
           type,
-          key.currentContext,
+          context,
           duration: duration
         )
       );

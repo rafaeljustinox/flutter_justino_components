@@ -9,8 +9,8 @@ class ModernButton extends StatelessWidget {
   final Color backgroundColor;
   final FontWeight fontWeight;
   ModernButton({
-    @required this.onPressed,
-    @required this.text,
+    this.onPressed,
+    this.text,
     this.icon,
     this.backgroundColor,
     this.fontWeight
@@ -26,13 +26,15 @@ class ModernButton extends StatelessWidget {
             height: 56.0,
             child: 
               icon != null
-            ? RaisedButton.icon(
-              color: Theme.of(context).accentColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: _border,
+            ? ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Theme.of(context).accentColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: _border,
+                ),
+                //disabledColor: Theme.of(context).disabledColor,
               ),
               onPressed: onPressed,
-              disabledColor: Theme.of(context).disabledColor,
               icon: icon,
               label: Text(
                 text,
@@ -42,12 +44,14 @@ class ModernButton extends StatelessWidget {
                 )
               ),
             )
-            : FlatButton(
-              color: Theme.of(context).accentColor,
-              disabledColor: Theme.of(context).disabledColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: _border,
-                //side: BorderSide(color: Colors.grey)
+            : TextButton(
+              style: TextButton.styleFrom(
+                primary: Theme.of(context).accentColor,
+                //disabledColor: Theme.of(context).disabledColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: _border,
+                  //side: BorderSide(color: Colors.grey)
+                ),
               ),
               onPressed: onPressed,
               child: Text(

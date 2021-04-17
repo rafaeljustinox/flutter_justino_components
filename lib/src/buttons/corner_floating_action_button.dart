@@ -26,13 +26,28 @@ class CornerFloatingActionButton extends StatelessWidget {
             ),
             child: 
             Container(
-              child: RaisedButton(
+              /* child: RaisedButton(
                 onPressed: onPressed,
                 shape: RoundedRectangleBorder(
                   borderRadius:  BorderRadius.only(topLeft: Radius.circular(32.0)),
                 ),
                 color: Theme.of(context).accentColor,
                 splashColor: Colors.white10,
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                  size: 36.0,
+                )
+              ), */
+              child: ElevatedButton(
+                onPressed: onPressed,
+                style: ElevatedButton.styleFrom(
+                  primary: Theme.of(context).accentColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius:  BorderRadius.only(topLeft: Radius.circular(32.0)),
+                  ),
+                ),
+                //splashColor: Colors.white10,
                 child: Icon(
                   Icons.add,
                   color: Colors.white,

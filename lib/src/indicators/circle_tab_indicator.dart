@@ -19,7 +19,7 @@ class _CirclePainter extends BoxPainter {
 class CircleTabIndicator extends Decoration {
   final BoxPainter _painter;
 
-  CircleTabIndicator({@required Color color, @required double radius}) : _painter = _CirclePainter(color, radius);
+  CircleTabIndicator({Color color, double radius}) : _painter = _CirclePainter(color, radius);
 
   @override
   BoxPainter createBoxPainter([onChanged]) => _painter;

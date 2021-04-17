@@ -16,12 +16,12 @@ class Counter extends StatefulWidget {
 
   const Counter({
     Key key,
-    @required this.onChange,
-    @required this.initialValue,
-    @required this.min,
-    @required this.max,
-    @required this.vibrate,
-    @required this.color
+    this.onChange,
+    this.initialValue,
+    this.min,
+    this.max,
+    this.vibrate,
+    this.color
   }) : super(key: key);
   
   @override
@@ -145,11 +145,13 @@ class _CounterState extends State<Counter> {
     return GestureDetector(
       onLongPressStart: (_) => _onLongPressStart(action),
       onLongPressEnd: (_) => _onLongPressEnd(),
-      child: RaisedButton(
-        elevation: 4.0,
-        padding: EdgeInsets.all(10.0),
-        shape: CircleBorder(),
-        color: color,
+      child: ElevatedButton(
+        style:  ElevatedButton.styleFrom(
+          elevation: 4.0,
+          padding: EdgeInsets.all(10.0),
+          shape: CircleBorder(),
+          primary: color,
+        ),
         onPressed: _handleActionPressed(action),
         child: _buildActionIcon(action)
       ),

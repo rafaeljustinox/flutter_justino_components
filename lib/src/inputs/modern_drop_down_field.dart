@@ -197,7 +197,7 @@ class ModernDropdownFieldItem<T> extends CustomDropdownMenuItem<T> {
     Key key,
     this.onTap,
     this.value,
-    @required Widget child,
+    Widget child,
   }) : assert(child != null),
         super(key: key, child: child);
 }
