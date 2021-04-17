@@ -33,7 +33,7 @@ class ModernTextField extends StatefulWidget {
   final bool obscureText; // = false;
   final bool autocorrect; // = true;
   final bool enableSuggestions; // = true;
-  final bool autovalidate; // = false;
+  final AutovalidateMode autovalidateMode;
   final bool maxLengthEnforced; // = true;
   final int maxLines;// = 1;
   final int minLines;
@@ -105,7 +105,7 @@ class ModernTextField extends StatefulWidget {
     this.autocorrect: true,
     this.enableSuggestions: true,
     this.maxLengthEnforced: true,
-    this.autovalidate: false,
+    this.autovalidateMode: AutovalidateMode.disabled,
     this.maxLines: 1,
     this.expands: false,
     this.enabled: true,
@@ -291,7 +291,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
               autocorrect: widget.autocorrect,
               enableSuggestions: widget.enableSuggestions,
               maxLengthEnforced: widget.maxLengthEnforced,
-              autovalidate: widget.autovalidate,
+              autovalidateMode: widget.autovalidateMode,
               maxLines: widget.maxLines,
               expands: widget.expands,
               enabled: widget.enabled,

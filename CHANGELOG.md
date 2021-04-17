@@ -1,3 +1,7 @@
+## [0.1.2]
+
+* Inputs: Updated autovalidate to autovalidateMode
+
 ## [0.1.1]
 
 * Renamed RoundedButton to ModernButton

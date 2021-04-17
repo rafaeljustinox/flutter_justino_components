@@ -1457,7 +1457,7 @@ class CustomDropdownButtonFormField<T> extends FormField<T> {
     InputDecoration decoration,
     FormFieldSetter<T> onSaved,
     FormFieldValidator<T> validator,
-    bool autovalidate = false,
+    AutovalidateMode autovalidateMode = AutovalidateMode.disabled,
   }) : assert(items == null || items.isEmpty || value == null ||
       items.where((CustomDropdownMenuItem<T> item) {
         return item.value == value;
@@ -1479,7 +1479,7 @@ class CustomDropdownButtonFormField<T> extends FormField<T> {
           onSaved: onSaved,
           initialValue: value,
           validator: validator,
-          autovalidate: autovalidate,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           builder: (FormFieldState<T> field) {
             final _DropdownButtonFormFieldState<T> state = field as _DropdownButtonFormFieldState<T>;
             final InputDecoration decorationArg =  decoration ?? InputDecoration(focusColor: focusColor);
