@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class BottomButtonWidget extends StatelessWidget {
-  final Function onPressed;
-  final String text;
-  final String heroTag;
-  const BottomButtonWidget({Key key, this.onPressed, this.text, this.heroTag}) : super(key: key);
+  final Function? onPressed;
+  final String? text;
+  final String? heroTag;
+  const BottomButtonWidget({Key? key, this.onPressed, this.text, this.heroTag}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class BottomButtonWidget extends StatelessWidget {
         right: -32.0,
         child: Material(
           child: Hero(
-            tag: this.heroTag != null ? this.heroTag : 'bottomButtomWidget',
+            tag: this.heroTag != null ? this.heroTag! : 'bottomButtomWidget',
             child: TextButton(
               style: TextButton.styleFrom(
                 primary: Theme.of(context).accentColor,
@@ -26,15 +26,15 @@ class BottomButtonWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: this.onPressed,//_handleSave,
+              onPressed: this.onPressed as void Function()?,//_handleSave,
               //splashColor: Colors.white10,
               child: SizedBox(
                 width: double.maxFinite,
                 height: MediaQuery.of(context).size.height * 0.1,//82.0,
                 child: Center(
                   child: Text(
-                    this.text,
-                    style: Theme.of(context).textTheme.button.copyWith(
+                    this.text!,
+                    style: Theme.of(context).textTheme.button!.copyWith(
                       color: Colors.white, //Theme.of(context).backgroundColor,
                     )
                   ),

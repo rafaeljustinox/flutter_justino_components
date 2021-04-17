@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
 import '../enums.dart';
 
-class ModernSnackbar extends SnackBar {
+class ModernSnackbar {
+
+  final String title;
+  final String body;
+  final ModernSnackbarType type;
+  final BuildContext context;
+  Duration duration;
+  
+  ModernSnackbar({
+    required this.title,
+    required this.body,
+    required this.type,
+    required this.context,
+    this.duration = const Duration(seconds: 4),
+  });
   
   static create(
     String title,
@@ -10,7 +24,7 @@ class ModernSnackbar extends SnackBar {
     BuildContext context,
     { Duration duration : const Duration(seconds: 4) }) {
 
-    Color color;
+    Color? color;
     if ( type == ModernSnackbarType.info ) color = Colors.lightBlue.shade200;
     if ( type == ModernSnackbarType.warning ) color = Colors.yellowAccent.shade700;
     if ( type == ModernSnackbarType.error ) color = Colors.pinkAccent.shade200;
@@ -27,7 +41,7 @@ class ModernSnackbar extends SnackBar {
             child: Text(
               title,
               textAlign: TextAlign.start,
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
                 color: color,
@@ -42,7 +56,7 @@ class ModernSnackbar extends SnackBar {
                 Text(
                   body,
                   textAlign: TextAlign.start,
-                  style: Theme.of(context).textTheme.bodyText2.copyWith(
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
                     fontWeight: FontWeight.bold,
                     fontSize: 14.0,
                     color: Colors.white,
@@ -65,18 +79,14 @@ class ModernSnackbar extends SnackBar {
       Duration duration : const Duration(seconds: 4) 
     }) {
     
-    if ( context != null ) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        ModernSnackbar.create(
-          title,
-          body,
-          type,
-          context,
-          duration: duration
-        )
-      );
-    } else {
-      print('Snackbar não foi mostrada pois a chave do Scaffold não foi informada');
-    }
+    ScaffoldMessenger.of(context).showSnackBar(
+      ModernSnackbar.create(
+        title,
+        body,
+        type,
+        context,
+        duration: duration
+      )
+    );
   }
 }

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class ModernButton extends StatelessWidget {
 
-  final VoidCallback onPressed;
-  final String text;
-  final Icon icon;
+  final VoidCallback? onPressed;
+  final String? text;
+  final Icon? icon;
   final BorderRadius _border =  BorderRadius.circular(16.0);
-  final Color backgroundColor;
-  final FontWeight fontWeight;
+  final Color? backgroundColor;
+  final FontWeight? fontWeight;
   ModernButton({
     this.onPressed,
     this.text,
@@ -35,10 +35,10 @@ class ModernButton extends StatelessWidget {
                 //disabledColor: Theme.of(context).disabledColor,
               ),
               onPressed: onPressed,
-              icon: icon,
+              icon: icon!,
               label: Text(
-                text,
-                style: Theme.of(context).textTheme.button.copyWith(
+                text!,
+                style: Theme.of(context).textTheme.button!.copyWith(
                   color: Colors.white,
                   fontWeight: fontWeight
                 )
@@ -55,8 +55,8 @@ class ModernButton extends StatelessWidget {
               ),
               onPressed: onPressed,
               child: Text(
-                text,
-                style: Theme.of(context).textTheme.button.copyWith(
+                text!,
+                style: Theme.of(context).textTheme.button!.copyWith(
                   color: Colors.white,
                   fontWeight: fontWeight
                 )

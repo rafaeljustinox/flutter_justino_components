@@ -8,27 +8,27 @@ enum ModernTextFieldTheme {
 
 class ModernTextField extends StatefulWidget {
 
-  final Key key;
-  final TextEditingController controller;
-  final String initialValue;
-  final FocusNode focusNode;
+  final Key? key;
+  final TextEditingController? controller;
+  final String? initialValue;
+  final FocusNode? focusNode;
 
-  final FontWeight labelWeight;
-  final FontWeight textWeight;
-  final ModernTextFieldTheme theme;
+  final FontWeight? labelWeight;
+  final FontWeight? textWeight;
+  final ModernTextFieldTheme? theme;
 
   //final InputDecoration decoration = const InputDecoration();
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
-  final TextInputAction textInputAction;
-  final TextStyle style;
-  final StrutStyle strutStyle;
-  final TextDirection textDirection;
+  final TextInputAction? textInputAction;
+  final TextStyle? style;
+  final StrutStyle? strutStyle;
+  final TextDirection? textDirection;
   final TextAlign textAlign = TextAlign.start;
-  final TextAlignVertical textAlignVertical;
+  final TextAlignVertical? textAlignVertical;
   final bool autofocus;// = false;
   final bool readOnly;//  = false;
-  final ToolbarOptions toolbarOptions;
+  final ToolbarOptions? toolbarOptions;
   final bool showCursor;
   final bool obscureText; // = false;
   final bool autocorrect; // = true;
@@ -36,31 +36,31 @@ class ModernTextField extends StatefulWidget {
   final AutovalidateMode autovalidateMode;
   final MaxLengthEnforcement maxLengthEnforcement; // = true;
   final int maxLines;// = 1;
-  final int minLines;
+  final int? minLines;
   final bool expands;//  = false;
-  final int maxLength;
-  final ValueChanged<String> onChanged;
-  final GestureTapCallback onTap;
-  final VoidCallback onEditingComplete;
-  final ValueChanged<String> onFieldSubmitted;
-  final FormFieldSetter<String> onSaved;
-  final FormFieldValidator<String> validator;
-  final List<TextInputFormatter> inputFormatters;
+  final int? maxLength;
+  final ValueChanged<String>? onChanged;
+  final GestureTapCallback? onTap;
+  final VoidCallback? onEditingComplete;
+  final ValueChanged<String>? onFieldSubmitted;
+  final FormFieldSetter<String>? onSaved;
+  final FormFieldValidator<String>? validator;
+  final List<TextInputFormatter>? inputFormatters;
   final bool enabled;// = true;
   final double cursorWidth = 2.0;
-  final Radius cursorRadius;
-  final Color cursorColor;
-  final Brightness keyboardAppearance;
+  final Radius? cursorRadius;
+  final Color? cursorColor;
+  final Brightness? keyboardAppearance;
   final EdgeInsets scrollPadding;
   final bool enableInteractiveSelection = true;
-  final InputCounterWidgetBuilder buildCounter;
+  final InputCounterWidgetBuilder? buildCounter;
 
-  final String labelText;
-  final String errorText;
-  final String hintText;
-  final Widget prefixIcon;
-  final Widget suffixIcon;
-  final GestureTapCallback onSuffixTap;
+  final String? labelText;
+  final String? errorText;
+  final String? hintText;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final GestureTapCallback? onSuffixTap;
 
   ModernTextField({
     this.key,
@@ -142,12 +142,12 @@ class _ModernTextFieldState extends State<ModernTextField> {
 
   Widget _buildLabelText() {
     return 
-    widget.labelText != null && widget.labelText.isNotEmpty
+    widget.labelText != null && widget.labelText!.isNotEmpty
     ?  Padding(
         padding: EdgeInsets.symmetric(vertical: 8.0),
         child: Text(
-          widget.labelText,
-          style: Theme.of(context).textTheme.subtitle1.copyWith(
+          widget.labelText!,
+          style: Theme.of(context).textTheme.subtitle1!.copyWith(
             fontWeight: widget.labelWeight != null ? widget.labelWeight : FontWeight.bold,
             color: _buildLabelTextColor()
           )
@@ -156,7 +156,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
     : SizedBox();
   }
 
-  Widget _buildPrefixIcon() {
+  Widget? _buildPrefixIcon() {
     return 
     widget.prefixIcon != null
     ? Padding(
@@ -169,7 +169,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
     : null;
   }
 
-  Widget _buildSuffixIcon() {
+  Widget? _buildSuffixIcon() {
 
     return 
     widget.suffixIcon != null
@@ -181,7 +181,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
             child: InkWell(
               onTap: () {
                 if (widget.onSuffixTap != null) {
-                  widget.onSuffixTap();
+                  widget.onSuffixTap!();
                 }
               },
               child: SizedBox(
@@ -196,10 +196,10 @@ class _ModernTextFieldState extends State<ModernTextField> {
     : null;
   }
 
-  Color _buildLabelTextColor() {
+  Color? _buildLabelTextColor() {
 
     if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1.color;
+      return Theme.of(context).textTheme.bodyText1!.color;
     } else {
       return Colors.white;
     }
@@ -219,17 +219,17 @@ class _ModernTextFieldState extends State<ModernTextField> {
   Color _buildHintTextColor() {
 
     if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1.color.withOpacity(0.4);
+      return Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.4);
     } else {
       return Colors.white.withOpacity(0.4);
     }
     
   }
 
-  Color _buildTextColor() {
+  Color? _buildTextColor() {
 
     if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1.color;
+      return Theme.of(context).textTheme.bodyText1!.color;
     } else {
       return Colors.white;
     }
@@ -296,7 +296,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
               expands: widget.expands,
               enabled: widget.enabled,
               scrollPadding: widget.scrollPadding,
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
                 height: 1.4,
                 fontWeight: widget.textWeight != null ? widget.textWeight : FontWeight.normal,
                 color: _buildTextColor()
@@ -305,13 +305,13 @@ class _ModernTextFieldState extends State<ModernTextField> {
               decoration: InputDecoration(
                 hintText: widget.hintText,
                 errorText: widget.errorText,
-                errorStyle: Theme.of(context).textTheme.subtitle2.copyWith(
+                errorStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
                   color: _buildErrorTextColor()
                 ),
                 filled: true,
                 //fillColor: _buildFillColor(),
                 contentPadding: _buildPadding(),
-                hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+                hintStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
                   color:_buildHintTextColor()
                 ),
                 prefixIcon: _buildPrefixIcon(),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CornerButton extends StatefulWidget {
-  final Function onPressed;
-  final String heroTag;
+  final Function? onPressed;
+  final String? heroTag;
   final bool isExpanded;
   final bool isVisible;
-  final Widget expandedContent;
-  final Widget collapsedContent;
+  final Widget? expandedContent;
+  final Widget? collapsedContent;
 
   const CornerButton({
-    Key key,
+    Key? key,
     this.heroTag,
     this.isExpanded = false,
     this.isVisible = true,
@@ -58,7 +58,7 @@ class _CornerButtonState extends State<CornerButton> {
           shape: RoundedRectangleBorder(
             borderRadius:  BorderRadius.circular(32.0)            
           ),
-          onPressed: widget.onPressed,
+          onPressed: widget.onPressed as void Function()?,
           child: _buildContent(widget.isVisible)
         ),
       ),

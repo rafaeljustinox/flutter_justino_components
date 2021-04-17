@@ -7,15 +7,15 @@ enum CounterAction {
 }
 
 class Counter extends StatefulWidget {
-  final Function onChange;
-  final int initialValue;
-  final int min;
-  final int max;
-  final bool vibrate;
-  final Color color;
+  final Function? onChange;
+  final int? initialValue;
+  final int? min;
+  final int? max;
+  final bool? vibrate;
+  final Color? color;
 
   const Counter({
-    Key key,
+    Key? key,
     this.onChange,
     this.initialValue,
     this.min,
@@ -44,38 +44,38 @@ class _CounterState extends State<Counter> {
     this.color
   });
 
-  final int initialValue;
-  final int min;
-  final int max;
-  final bool vibrate;
-  final Color color;
+  final int? initialValue;
+  final int? min;
+  final int? max;
+  final bool? vibrate;
+  final Color? color;
 
-  int _counter;
+  int _counter = 0;
 
   bool _isLongPressing = false;
 
-  int get counter => _counter;
+  int? get counter => _counter;
 
-  bool get _canDecrease => _counter > min;
-  bool get _canIncrease => _counter < max;
+  bool get _canDecrease => _counter > min!;
+  bool get _canIncrease => _counter < max!;
 
   void _decrease() {
     if (_canDecrease) {
       _counter--;
-      if (vibrate) {
+      if (vibrate!) {
         HapticFeedback.lightImpact();
       }
-      widget.onChange(_counter);
+      widget.onChange!(_counter);
     }
   }
 
   void _increase() {
     if (_canIncrease) {
       _counter++;
-      if (vibrate) {
+      if (vibrate!) {
         HapticFeedback.lightImpact();
       }
-      widget.onChange(_counter);
+      widget.onChange!(_counter);
     }
   }
 
@@ -97,7 +97,7 @@ class _CounterState extends State<Counter> {
     setState(() => _isLongPressing = false);
   }
 
-  Function _handleActionPressed(CounterAction action) {
+  Function? _handleActionPressed(CounterAction action) {
 
     if (action == CounterAction.decrease) {
       return _canDecrease ? _decrease : null;
@@ -152,7 +152,7 @@ class _CounterState extends State<Counter> {
           shape: CircleBorder(),
           primary: color,
         ),
-        onPressed: _handleActionPressed(action),
+        onPressed: _handleActionPressed(action) as void Function()?,
         child: _buildActionIcon(action)
       ),
     );
@@ -181,7 +181,7 @@ class _CounterState extends State<Counter> {
                 child: Text(
                   _counter.toString(),
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline4.copyWith(
+                  style: Theme.of(context).textTheme.headline4!.copyWith(
                     color: Colors.black,
                     fontSize: 26
                   )
@@ -210,7 +210,9 @@ class _CounterState extends State<Counter> {
   
   @override
   void initState() {
-    _counter = initialValue;
+    if (initialValue != null) {
+      _counter = initialValue!;
+    }
     super.initState();
   }
 

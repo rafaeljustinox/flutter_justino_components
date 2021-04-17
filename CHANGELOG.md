@@ -1,4 +1,4 @@
-## [0.1.6] Null-safety
+## [0.1.6] Migrated to null safety
 
 
 ## [0.1.5]

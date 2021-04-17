@@ -8,18 +8,18 @@ enum ModernDropdownFieldTheme {
 
 class ModernDropdownField extends StatefulWidget {
 
-  final Icon prefixIcon;
-  final List<dynamic> items;
+  final Icon? prefixIcon;
+  final List<dynamic>? items;
   final dynamic initialValue;
-  final ValueChanged<dynamic> onChanged;
-  final FontWeight labelWeight;
-  final FontWeight textWeight;
-  final ModernDropdownFieldTheme theme;
-  final String labelText;
-  final String hintText;
+  final ValueChanged<dynamic>? onChanged;
+  final FontWeight? labelWeight;
+  final FontWeight? textWeight;
+  final ModernDropdownFieldTheme? theme;
+  final String? labelText;
+  final String? hintText;
 
   const ModernDropdownField({
-    Key key,
+    Key? key,
     this.prefixIcon,
     this.items,
     this.initialValue,
@@ -55,13 +55,13 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
   Color _buildHintTextColor() {
 
     if (widget.theme == null || widget.theme == ModernDropdownFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1.color.withOpacity(0.4);
+      return Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.4);
     } else {
       return Colors.white.withOpacity(0.4);
     }
     
   }
-  Widget _buildPrefixIcon() {
+  Widget? _buildPrefixIcon() {
     return 
     widget.prefixIcon != null
     ? Padding(
@@ -74,10 +74,10 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
     : null;
   }
   
-  Color _buildLabelTextColor() {
+  Color? _buildLabelTextColor() {
 
     if (widget.theme == null || widget.theme == ModernDropdownFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1.color;
+      return Theme.of(context).textTheme.bodyText1!.color;
     } else {
       return Colors.white;
     }
@@ -85,12 +85,12 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
 
   Widget _buildLabelText() {
     return 
-    widget.labelText != null && widget.labelText.isNotEmpty
+    widget.labelText != null && widget.labelText!.isNotEmpty
     ?  Padding(
         padding: EdgeInsets.symmetric(vertical: 8.0),
         child: Text(
-          widget.labelText,
-          style: Theme.of(context).textTheme.subtitle1.copyWith(
+          widget.labelText!,
+          style: Theme.of(context).textTheme.subtitle1!.copyWith(
             fontWeight: widget.labelWeight != null ? widget.labelWeight : FontWeight.bold,
             color: _buildLabelTextColor()
           )
@@ -109,10 +109,10 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
 
   } */
 
-  Color _buildTextColor() {
+  Color? _buildTextColor() {
 
     if (widget.theme == null || widget.theme == ModernDropdownFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1.color;
+      return Theme.of(context).textTheme.bodyText1!.color;
     } else {
       return Colors.white;
     }
@@ -162,7 +162,7 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
                 filled: true,
                 //fillColor: _buildFillColor(),
                 contentPadding: _buildPadding(),
-                hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+                hintStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
                   color:_buildHintTextColor()
                 ),
                 prefixIcon: _buildPrefixIcon(),
@@ -173,9 +173,9 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
               ),
               value: widget.initialValue,
               icon: Icon(Icons.keyboard_arrow_down),
-              items: widget.items,
+              items: widget.items as List<CustomDropdownMenuItem>?,
               onChanged: widget.onChanged,
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
                 height: 1.4,
                 fontWeight: widget.textWeight != null ? widget.textWeight : FontWeight.normal,
                 color: _buildTextColor()
@@ -190,14 +190,13 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
 
 class ModernDropdownFieldItem<T> extends CustomDropdownMenuItem<T> {
 
-  final T value;
-  final VoidCallback onTap;
+  final T? value;
+  final VoidCallback? onTap;
 
   const ModernDropdownFieldItem({
-    Key key,
+    Key? key,
     this.onTap,
     this.value,
-    Widget child,
-  }) : assert(child != null),
-        super(key: key, child: child);
+    required Widget child,
+  }) : super(key: key, child: child);
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CornerFloatingActionButton extends StatelessWidget {
-  final Function onPressed;
-  final String heroTag;
+  final Function? onPressed;
+  final String? heroTag;
   const CornerFloatingActionButton({
-    Key key,
+    Key? key,
     this.onPressed,
     this.heroTag
   }) : super(key: key);
@@ -18,7 +18,7 @@ class CornerFloatingActionButton extends StatelessWidget {
         color: Colors.transparent,
         child:
         Hero(
-          tag: heroTag,
+          tag: heroTag!,
           child: ButtonTheme.fromButtonThemeData(
             data: ButtonThemeData(
               minWidth: 32.0,
@@ -40,7 +40,7 @@ class CornerFloatingActionButton extends StatelessWidget {
                 )
               ), */
               child: ElevatedButton(
-                onPressed: onPressed,
+                onPressed: onPressed as void Function()?,
                 style: ElevatedButton.styleFrom(
                   primary: Theme.of(context).accentColor,
                   shape: RoundedRectangleBorder(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoadingIndicator extends StatelessWidget {
-  final String text;
-  const LoadingIndicator({Key key, this.text}) : super(key: key);
+  final String? text;
+  const LoadingIndicator({Key? key, this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class LoadingIndicator extends StatelessWidget {
           ), */
           Padding(
             padding: EdgeInsets.all(10),
-            child: Text( text ),
+            child: Text( text! ),
           ),
         ],
       ),

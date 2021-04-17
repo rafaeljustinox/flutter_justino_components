@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {
-  final String title;
+  final String? title;
   final AlignmentGeometry alignment;
 
   const SectionTitle({
-    Key key,
+    Key? key,
     this.title,
     this.alignment = Alignment.center,
   }) : super(key: key);
@@ -22,8 +22,8 @@ class SectionTitle extends StatelessWidget {
           right: 24.0
         ),
         child: Text(
-          title,
-          style: Theme.of(context).textTheme.headline6.copyWith(
+          title!,
+          style: Theme.of(context).textTheme.headline6!.copyWith(
             fontWeight: FontWeight.w900
           )
         ),

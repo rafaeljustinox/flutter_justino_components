@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class _CirclePainter extends BoxPainter {
   final Paint _paint;
-  final double radius;
+  final double? radius;
 
   _CirclePainter(Color color, this.radius)
       : _paint = Paint()
@@ -11,16 +11,20 @@ class _CirclePainter extends BoxPainter {
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
-    final Offset circleOffset = offset + Offset(cfg.size.width / 2, cfg.size.height - radius);
-    canvas.drawCircle(circleOffset, radius, _paint);
+    final Offset circleOffset = offset + Offset(cfg.size!.width / 2, cfg.size!.height - radius!);
+    canvas.drawCircle(circleOffset, radius!, _paint);
   }
 }
 
 class CircleTabIndicator extends Decoration {
   final BoxPainter _painter;
 
-  CircleTabIndicator({Color color, double radius}) : _painter = _CirclePainter(color, radius);
+  CircleTabIndicator({required Color color, double? radius}) : _painter = _CirclePainter(color, radius);
 
   @override
-  BoxPainter createBoxPainter([onChanged]) => _painter;
+  BoxPainter createBoxPainter([ VoidCallback? onChanged ]) {
+    assert(debugAssertIsValid());
+    return _painter;
+  }
+  //BoxPainter createBoxPainter([ onChanged ]) => _painter;
 }

@@ -4,7 +4,7 @@ enum CarouselPageChangedReason { timed, manual, controller }
 
 class CarouselOptions {
   /// Set carousel height and overrides any existing [aspectRatio].
-  final double height;
+  final double? height;
 
   /// Aspect ratio is used if no height have been declared.
   ///
@@ -65,10 +65,10 @@ class CarouselOptions {
   final Axis scrollDirection;
 
   /// Called whenever the page in the center of the viewport changes.
-  final Function(int index, CarouselPageChangedReason reason) onPageChanged;
+  final Function(int index, CarouselPageChangedReason reason)? onPageChanged;
 
   /// Called whenever the carousel is scrolled
-  final ValueChanged<double> onScrolled;
+  final ValueChanged<double>? onScrolled;
 
   /// How the carousel should respond to user input.
   ///
@@ -79,7 +79,7 @@ class CarouselOptions {
   /// [PageScrollPhysics] prior to being used.
   ///
   /// Defaults to matching platform conventions.
-  final ScrollPhysics scrollPhysics;
+  final ScrollPhysics? scrollPhysics;
 
   CarouselOptions({
     this.height,

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class OfflineWidget extends StatelessWidget {
 
-  final Function onPressed;
+  final Function? onPressed;
 
-  const OfflineWidget({Key key, this.onPressed}) : super(key: key);
+  const OfflineWidget({Key? key, this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class OfflineWidget extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyText2
               ),
               TextButton(
-                onPressed: onPressed != null ? onPressed : (){},
+                onPressed: onPressed != null ? onPressed as void Function()? : (){},
                 child: Text(
                   'Tentar novamente',
                   style: Theme.of(context).textTheme.bodyText2

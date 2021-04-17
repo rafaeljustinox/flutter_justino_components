@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class PageTitle extends StatelessWidget {
-  final String title;
-  final FontWeight fontWeight;
-  final Color color;
+  final String? title;
+  final FontWeight? fontWeight;
+  final Color? color;
 
   const PageTitle({
-    Key key,
+    Key? key,
     this.title,
     this.fontWeight,
     this.color,
@@ -21,9 +21,9 @@ class PageTitle extends StatelessWidget {
         child: Wrap(
           children: <Widget>[
             Text(
-              title,
+              title!,
               textAlign: TextAlign.start,
-              style: Theme.of(context).textTheme.headline4.copyWith(
+              style: Theme.of(context).textTheme.headline4!.copyWith(
                 height: 1.2,
                 fontWeight: fontWeight,
                 color: color

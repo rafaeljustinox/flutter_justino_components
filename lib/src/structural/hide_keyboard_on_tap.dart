@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class HideKeyboardOnTap extends StatefulWidget {
 
-  final Widget child;
+  final Widget? child;
 
-  const HideKeyboardOnTap({Key key, this.child}) : super(key: key);
+  const HideKeyboardOnTap({Key? key, this.child}) : super(key: key);
 
   @override
   _HideKeyboardOnTapState createState() => _HideKeyboardOnTapState();

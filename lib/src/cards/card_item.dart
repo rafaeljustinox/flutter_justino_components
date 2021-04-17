@@ -5,37 +5,35 @@ import 'package:flutter/material.dart';
 /// This widget's height is based on the animation parameter, it varies
 /// from 0 to 128 as the animation varies from 0.0 to 1.0.
 class CardItem extends StatefulWidget  {
-  final Animation<double> animation;
-  final VoidCallback onTap;
-  final int item;
-  final bool selected;
-  const CardItem({Key key, this.animation, this.onTap, this.item, this.selected}) : super(key: key);
+  final Animation<double>? animation;
+  final VoidCallback? onTap;
+  final int? item;
+  final bool? selected;
+  const CardItem({Key? key, this.animation, this.onTap, this.item, this.selected}) : super(key: key);
 
   @override
-  _CardItemState createState() => _CardItemState(animation: this.animation, item: this.item, onTap: this.onTap);
+  _CardItemState createState() => _CardItemState(animation: this.animation!, item: this.item, onTap: this.onTap);
   
 }
 
 class _CardItemState extends State<CardItem> with SingleTickerProviderStateMixin {
 
   _CardItemState({
-    this.animation,
+    required this.animation,
     this.onTap,
     this.item,
     this.selected: false}
   )
-  : assert(animation != null),
-    assert(item != null && item >= 0),
-    assert(selected != null);
+  : assert(item != null && item >= 0);
     //super(key: key);
 
   final Animation<double> animation;
-  final VoidCallback onTap;
-  final int item;
+  final VoidCallback? onTap;
+  final int? item;
   final bool selected;
 
-  AnimationController _controller;
-  Animation<Offset> _offsetAnimation;
+  late AnimationController _controller;
+  late Animation<Offset> _offsetAnimation;
 
   @override
   void initState() {
@@ -64,9 +62,9 @@ class _CardItemState extends State<CardItem> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = Theme.of(context).textTheme.headline4;
+    TextStyle? textStyle = Theme.of(context).textTheme.headline4;
     if (selected)
-      textStyle = textStyle.copyWith(color: Colors.lightGreenAccent[400]);
+      textStyle = textStyle!.copyWith(color: Colors.lightGreenAccent[400]);
     return Padding(
       padding: const EdgeInsets.all(2.0),
       child: SlideTransition(
@@ -77,7 +75,7 @@ class _CardItemState extends State<CardItem> with SingleTickerProviderStateMixin
           child: SizedBox(
             height: 128.0,
             child: Card(
-              color: Colors.primaries[item % Colors.primaries.length],
+              color: Colors.primaries[item! % Colors.primaries.length],
               child: Center(
                 child: Text('Item $item', style: textStyle),
               ),
