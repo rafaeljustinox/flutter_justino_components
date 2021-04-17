@@ -1,3 +1,8 @@
+## [0.1.1]
+
+* Renamed RoundedButton to ModernButton
+* Improved Example
+
 ## [0.1.0]
 
 * Improved Example
