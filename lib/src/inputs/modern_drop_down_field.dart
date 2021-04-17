@@ -160,7 +160,7 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
                 labelStyle: Theme.of(context).textTheme.bodyText1,
                 alignLabelWithHint: false,
                 filled: true,
-                fillColor: _buildFillColor(),
+                //fillColor: _buildFillColor(),
                 contentPadding: _buildPadding(),
                 hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
                   color:_buildHintTextColor()

@@ -1,3 +1,7 @@
+## [0.1.3]
+
+* Inputs: Removed fillColor from ModernTextField to fix some issues with themes
+
 ## [0.1.2]
 
 * Inputs: Updated autovalidate to autovalidateMode

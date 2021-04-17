@@ -309,7 +309,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
                   color: _buildErrorTextColor()
                 ),
                 filled: true,
-                fillColor: _buildFillColor(),
+                //fillColor: _buildFillColor(),
                 contentPadding: _buildPadding(),
                 hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
                   color:_buildHintTextColor()
