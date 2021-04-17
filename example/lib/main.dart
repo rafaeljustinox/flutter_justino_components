@@ -220,30 +220,11 @@ class _MyHomePageState extends State<MyHomePage>
                 horizontal: 8.0
               ),
               child: ModernButton(
-                onPressed: () => setState((){
-                  _isFabExpanded = !_isFabExpanded;
-                }),
-                text: _isFabExpanded 
-                  ? 'Collapse Corner Button'
-                  : 'Expand Corner Button',
-                fontWeight: FontWeight.bold,
-                icon: Icon(
-                  _isFabExpanded
-                  ? Icons.arrow_forward_rounded
-                  : Icons.arrow_back_rounded,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 22.0,
-                horizontal: 8.0
-              ),
-              child: ModernButton(
-                onPressed: () => setState((){
-                  _isFabVisible = !_isFabVisible;
-                }),
+                onPressed: () {
+                  setState((){
+                    _isFabVisible = !_isFabVisible;
+                  });
+                },
                 text: _isFabVisible 
                   ? 'Hide Corner Button'
                   : 'Show Corner Button',
@@ -256,7 +237,31 @@ class _MyHomePageState extends State<MyHomePage>
                 ),
               ),
             ),
-            
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 22.0,
+                horizontal: 8.0
+              ),
+              child: ModernButton(
+                onPressed: (!_isFabExpanded && !_isFabVisible)
+                  ? null
+                  : () {
+                    setState((){
+                      _isFabExpanded = !_isFabExpanded;
+                    });
+                  },
+                text: _isFabExpanded 
+                  ? 'Collapse Corner Button'
+                  : 'Expand Corner Button',
+                fontWeight: FontWeight.bold,
+                icon: Icon(
+                  _isFabExpanded
+                  ? Icons.arrow_forward_rounded
+                  : Icons.arrow_back_rounded,
+                  color: Colors.white,
+                ),
+              ),
+            ),
           ],
         ),
       ),
