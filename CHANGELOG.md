@@ -1,3 +1,7 @@
+## 0.1.7
+
+* Fixed ModernDropdownField issues
+
 ## 0.1.6-null-safety 
 
 * Migrate do null-safety

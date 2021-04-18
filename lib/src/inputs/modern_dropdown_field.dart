@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:justino_components/src/inputs/custom_drop_down.dart';
+import 'package:justino_components/src/inputs/custom_dropdown.dart';
 
 enum ModernDropdownFieldTheme {
   dark,
@@ -59,8 +59,8 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
     } else {
       return Colors.white.withOpacity(0.4);
     }
-    
   }
+
   Widget? _buildPrefixIcon() {
     return 
     widget.prefixIcon != null
@@ -129,7 +129,7 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
         Stack(
           alignment: Alignment.topRight,
           children: <Widget>[
-            CustomDropdownButtonFormField(
+            DropdownButtonFormField(
               decoration: InputDecoration(
                 disabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.0),
@@ -173,7 +173,7 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
               ),
               value: widget.initialValue,
               icon: Icon(Icons.keyboard_arrow_down),
-              items: widget.items as List<CustomDropdownMenuItem>?,
+              items: widget.items as List<DropdownMenuItem>?,
               onChanged: widget.onChanged,
               style: Theme.of(context).textTheme.bodyText1!.copyWith(
                 height: 1.4,

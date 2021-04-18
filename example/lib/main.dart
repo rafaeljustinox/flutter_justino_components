@@ -46,6 +46,8 @@ class _MyHomePageState extends State<MyHomePage>
   // ignore: unused_field
   String? _selectedOption = '';
 
+  String dropdownValue = 'One';
+
   List<Widget> _tabs = [
     Tab(child: Text('Inputs')),
     Tab(child: Text('Buttons')),
@@ -164,19 +166,25 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
               ),
             ),
-            
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ModernDropdownField(
                 hintText: 'Select one option',
-                prefixIcon: Icon(
-                  Icons.place,
-                ),
                 initialValue: _dropdownOptions[0],
                 items: _dropdownOptions.map((String option) {
-                  return ModernDropdownFieldItem<String>(
+                  return DropdownMenuItem<String>(
                     value: option,
-                    child: Text(option),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.place,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0),
+                          child: Text(option),
+                        )
+                      ],
+                    ),
                   );
                 }).toList(),
                 onChanged: (updatedOption) {
@@ -339,7 +347,7 @@ class _MyHomePageState extends State<MyHomePage>
                               children: [
                                 _buildInputsTab(),
                                 _buildButtonsTab(),
-                                _buildSnackbarTab()
+                                _buildSnackbarTab(),
                               ],
                             ),
                           )

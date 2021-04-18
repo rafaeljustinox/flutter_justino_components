@@ -21,8 +21,8 @@ export 'src/informative/page_title.dart';
 export 'src/informative/section_title.dart';
 
 export 'src/inputs/counter_widget.dart';
-export 'src/inputs/custom_drop_down.dart';
-export 'src/inputs/modern_drop_down_field.dart';
+export 'src/inputs/custom_dropdown.dart';
+export 'src/inputs/modern_dropdown_field.dart';
 export 'src/inputs/modern_text_field.dart';
 
 //export 'src/misc/carousel_options.dart';
