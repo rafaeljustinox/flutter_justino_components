@@ -1,3 +1,7 @@
+## 0.1.9
+
+* Removed unused widgets
+
 ## 0.1.8
 
 * Fixed ModernButton issues
