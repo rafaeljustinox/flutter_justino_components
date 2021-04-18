@@ -27,24 +27,24 @@ class ModernButton extends StatelessWidget {
             child: 
               icon != null
             ? ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                primary: Theme.of(context).accentColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: _border,
+                style: ElevatedButton.styleFrom(
+                  primary: Theme.of(context).accentColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: _border,
+                  ),
+                  //disabledColor: Theme.of(context).disabledColor,
                 ),
-                //disabledColor: Theme.of(context).disabledColor,
-              ),
-              onPressed: onPressed,
-              icon: icon!,
-              label: Text(
-                text!,
-                style: Theme.of(context).textTheme.button!.copyWith(
-                  color: Colors.white,
-                  fontWeight: fontWeight
-                )
-              ),
-            )
-            : TextButton(
+                onPressed: onPressed,
+                icon: icon!,
+                label: Text(
+                  text!,
+                  style: Theme.of(context).textTheme.button!.copyWith(
+                    color: Colors.white,
+                    fontWeight: fontWeight
+                  )
+                ),
+              )
+            : ElevatedButton(
               style: TextButton.styleFrom(
                 primary: Theme.of(context).accentColor,
                 //disabledColor: Theme.of(context).disabledColor,

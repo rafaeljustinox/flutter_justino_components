@@ -288,10 +288,6 @@ class _MyHomePageState extends State<MyHomePage>
             onPressed: () => _showSnackbar(),
             text: 'Test Snackbar',
             fontWeight: FontWeight.bold,
-            icon: Icon(
-              Icons.notifications,
-              color: Colors.white,
-            ),
           ),
         ),
       ),

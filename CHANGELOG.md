@@ -1,3 +1,7 @@
+## 0.1.8
+
+* Fixed ModernButton issues
+
 ## 0.1.7
 
 * Fixed ModernDropdownField issues
