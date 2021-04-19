@@ -1,3 +1,7 @@
+## 0.1.10
+
+* Fixed BottomButtonWidget color
+
 ## 0.1.9
 
 * Removed unused widgets

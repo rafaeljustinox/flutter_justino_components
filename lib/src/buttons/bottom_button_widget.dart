@@ -16,8 +16,8 @@ class BottomButtonWidget extends StatelessWidget {
         child: Material(
           child: Hero(
             tag: this.heroTag != null ? this.heroTag! : 'bottomButtomWidget',
-            child: TextButton(
-              style: TextButton.styleFrom(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
                 primary: Theme.of(context).accentColor,
                 shape: RoundedRectangleBorder(
                   borderRadius:  BorderRadius.only(
