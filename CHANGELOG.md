@@ -1,3 +1,7 @@
+## 0.1.11
+
+* Added ModernSelector
+
 ## 0.1.10
 
 * Fixed BottomButtonWidget color

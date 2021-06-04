@@ -52,11 +52,36 @@ class _MyHomePageState extends State<MyHomePage>
     Tab(child: Text('Inputs')),
     Tab(child: Text('Buttons')),
     Tab(child: Text('Snackbar')),
+    Tab(child: Text('Selectors')),
   ];
 
   bool _isFabExpanded = false;
   bool _isFabVisible = false;
 
+  List<ModernSelectorItem> selectorItems = [
+    ModernSelectorItem(id: '1', title: 'Option 1', subtitle: 'ID: 1'),
+    ModernSelectorItem(id: '2', title: 'Option 2', subtitle: 'ID: 2'),
+    ModernSelectorItem(id: '3', title: 'Option 3', subtitle: 'ID: 3'),
+    ModernSelectorItem(id: '4', title: 'Option 4', subtitle: 'ID: 4'),
+    ModernSelectorItem(id: '5', title: 'Option 5', subtitle: 'ID: 5'),
+    ModernSelectorItem(id: '6', title: 'Option 6', subtitle: 'ID: 6'),
+    ModernSelectorItem(id: '7', title: 'Option 7', subtitle: 'ID: 7'),
+    ModernSelectorItem(id: '8', title: 'Option 8', subtitle: 'ID: 8'),
+    ModernSelectorItem(id: '9', title: 'Option 9', subtitle: 'ID: 9'),
+    ModernSelectorItem(id: '10', title: 'Option 10', subtitle: 'ID: 10'),
+    ModernSelectorItem(id: '11', title: 'Option 11', subtitle: 'ID: 11'),
+    ModernSelectorItem(id: '12', title: 'Option 12', subtitle: 'ID: 12'),
+    ModernSelectorItem(id: '13', title: 'Option 13', subtitle: 'ID: 13'),
+    ModernSelectorItem(id: '14', title: 'Option 14', subtitle: 'ID: 14'),
+    ModernSelectorItem(id: '15', title: 'Option 15', subtitle: 'ID: 15'),
+    ModernSelectorItem(id: '16', title: 'Option 16', subtitle: 'ID: 16'),
+    ModernSelectorItem(id: '17', title: 'Option 17', subtitle: 'ID: 17'),
+    ModernSelectorItem(id: '18', title: 'Option 18', subtitle: 'ID: 18'),
+    ModernSelectorItem(id: '19', title: 'Option 19', subtitle: 'ID: 19'),
+  ];
+
+  ModernSelectorItem selectedItem = ModernSelectorItem(id: '10', title: 'Option 10');
+  
   @override
   void initState() {
     super.initState();
@@ -294,6 +319,31 @@ class _MyHomePageState extends State<MyHomePage>
     );
   }
 
+  Widget _buildSelectorsTab() {
+    return
+    Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 22.0,
+            horizontal: 0.0
+          ),
+          child: ModernSelector(
+            items: selectorItems,
+            selectedItem: selectedItem,
+            labelText: 'Select an option',
+            onChange: (selected) {
+              setState(() {
+                selectedItem = selected;
+              });
+            },
+          )
+        ),
+      ),
+    );
+  }
+
   Widget _buildCounter() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -344,6 +394,7 @@ class _MyHomePageState extends State<MyHomePage>
                                 _buildInputsTab(),
                                 _buildButtonsTab(),
                                 _buildSnackbarTab(),
+                                _buildSelectorsTab(),
                               ],
                             ),
                           )
