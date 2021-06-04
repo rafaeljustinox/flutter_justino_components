@@ -28,7 +28,7 @@ class ModernButton extends StatelessWidget {
               icon != null
             ? ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).accentColor,
+                  primary: backgroundColor ?? Theme.of(context).accentColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: _border,
                   ),
@@ -46,7 +46,7 @@ class ModernButton extends StatelessWidget {
               )
             : ElevatedButton(
               style: TextButton.styleFrom(
-                primary: Theme.of(context).accentColor,
+                primary: backgroundColor ?? Theme.of(context).accentColor,
                 //disabledColor: Theme.of(context).disabledColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: _border,

@@ -1,3 +1,7 @@
+## 0.1.12
+
+* Fixed background color of ModernButton
+
 ## 0.1.11
 
 * Added ModernSelector
