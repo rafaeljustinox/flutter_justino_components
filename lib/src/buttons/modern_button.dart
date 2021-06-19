@@ -8,12 +8,14 @@ class ModernButton extends StatelessWidget {
   final BorderRadius _border =  BorderRadius.circular(16.0);
   final Color? backgroundColor;
   final FontWeight? fontWeight;
+  final double? elevation;
   ModernButton({
     this.onPressed,
     this.text,
     this.icon,
     this.backgroundColor,
-    this.fontWeight
+    this.fontWeight,
+    this.elevation = 0.0,
   });
 
   @override
@@ -28,6 +30,7 @@ class ModernButton extends StatelessWidget {
               icon != null
             ? ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
+                  elevation: this.elevation,
                   primary: backgroundColor ?? Theme.of(context).accentColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: _border,
@@ -46,6 +49,7 @@ class ModernButton extends StatelessWidget {
               )
             : ElevatedButton(
               style: TextButton.styleFrom(
+                elevation: this.elevation,
                 primary: backgroundColor ?? Theme.of(context).accentColor,
                 //disabledColor: Theme.of(context).disabledColor,
                 shape: RoundedRectangleBorder(

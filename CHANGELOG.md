@@ -1,3 +1,7 @@
+## 0.1.13
+
+* ModderButton - Added elevation property
+
 ## 0.1.12
 
 * Fixed background color of ModernButton
