@@ -82,17 +82,28 @@ class _ModernSelectorDialogState extends State<ModernSelectorDialog> {
                   ? Theme.of(context).hoverColor
                   : Theme.of(context).cardColor,
                 ),
-                child: ListTile(
-                  onTap: () {
-                    _onOptionSelected(item);
-                  },
-                  leading: item.leading,
-                  title: Text(
-                    item.title,
-                    style: Theme.of(context).textTheme.bodyText1
-                  ),
-                  subtitle: Text(item.subtitle!),
-                ),
+                child: item.subtitle != null 
+                ? ListTile(
+                    onTap: () {
+                      _onOptionSelected(item);
+                    },
+                    leading: item.leading,
+                    title: Text(
+                      item.title,
+                      style: Theme.of(context).textTheme.bodyText1
+                    ),
+                    subtitle: Text(item.subtitle!),
+                  )
+                : ListTile(
+                    onTap: () {
+                      _onOptionSelected(item);
+                    },
+                    leading: item.leading,
+                    title: Text(
+                      item.title,
+                      style: Theme.of(context).textTheme.bodyText1
+                    ),
+                  )
               ),
             );
           }).toList(),
