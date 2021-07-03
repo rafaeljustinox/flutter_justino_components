@@ -7,16 +7,21 @@ export 'src/buttons/corner_button.dart';
 export 'src/buttons/corner_floating_action_button.dart';
 export 'src/buttons/modern_button.dart';
 export 'src/buttons/squared_fab_widget.dart';
+export 'src/buttons/vertical_rounded_button.dart';
 
 export 'src/cards/card_item.dart';
 
 export 'src/indicators/circle_tab_indicator.dart';
 export 'src/indicators/loading_indicator.dart';
+export 'src/indicators/modern_circular_percent_indicator.dart';
+export 'src/indicators/modern_linear_percent_indicator.dart';
 
 export 'src/informative/modern_snackbar.dart';
 export 'src/informative/offline_widget.dart';
 export 'src/informative/page_title.dart';
 export 'src/informative/section_title.dart';
+export 'src/informative/countup.dart';
+export 'src/informative/gradient_text.dart';
 
 export 'src/inputs/counter_widget.dart';
 export 'src/inputs/custom_dropdown.dart';
