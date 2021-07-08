@@ -35,6 +35,7 @@ class ModernSnackbar {
       //shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(12.0), topRight: Radius.circular(12.0))),
       duration: duration,
       content: Wrap(
+        direction: Axis.vertical,
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(top: 0.0, bottom: 6.0),

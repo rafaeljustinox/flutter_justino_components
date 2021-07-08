@@ -1,3 +1,6 @@
+## 0.1.16
+* Fixed ModernSnackBar layout
+
 ## 0.1.15
 
 * [new] Added ModernCircularPercentIndicator
