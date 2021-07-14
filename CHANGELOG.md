@@ -1,4 +1,9 @@
 ## 0.1.16
+
+* Improved ModernSnackBar
+
+## 0.1.16
+
 * Fixed ModernSnackBar layout
 
 ## 0.1.15

@@ -29,9 +29,8 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> 
-  with SingleTickerProviderStateMixin {
-  
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   TabController? _tabController;
   bool _isPasswordVisible = false;
@@ -80,8 +79,9 @@ class _MyHomePageState extends State<MyHomePage>
     ModernSelectorItem(id: '19', title: 'Option 19', subtitle: 'ID: 19'),
   ];
 
-  ModernSelectorItem selectedItem = ModernSelectorItem(id: '10', title: 'Option 10');
-  
+  ModernSelectorItem selectedItem =
+      ModernSelectorItem(id: '10', title: 'Option 10');
+
   @override
   void initState() {
     super.initState();
@@ -97,14 +97,28 @@ class _MyHomePageState extends State<MyHomePage>
   void _showSnackbar() {
     String title = 'Snackbar Demo';
     String message = 'Press again to test other snackbars colors';
-    print(_typeIndex);
     ModernSnackbarType type = ModernSnackbarType.values[_typeIndex];
 
     ModernSnackbar.show(
       context,
       title,
       message,
-      type: type
+      type: type,
+      backgroundColor: Colors.white,
+      titleColor: Colors.black,
+      bodyColor: Colors.grey,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(12.0)
+          ),
+      ),
+      action: SnackBarAction(
+        label: 'Undo',
+        onPressed: () {
+          // Some code to undo the change.
+        },
+      ),
     );
 
     setState(() {
@@ -128,29 +142,26 @@ class _MyHomePageState extends State<MyHomePage>
             tabs: _tabs,
             isScrollable: true,
             indicator: CircleTabIndicator(
-              color: Theme.of(context).primaryColor,
-              radius: 4
-            ),
+                color: Theme.of(context).primaryColor, radius: 4),
             unselectedLabelColor: Theme.of(context).disabledColor,
-            unselectedLabelStyle: 
-              Theme.of(context).textTheme.headline6!.copyWith(
-                fontWeight: FontWeight.w900,
-                fontSize: 20.0,
-            ),
+            unselectedLabelStyle:
+                Theme.of(context).textTheme.headline6!.copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 20.0,
+                    ),
             labelColor: Theme.of(context).primaryColor,
             labelStyle: Theme.of(context).textTheme.headline6!.copyWith(
-              fontWeight: FontWeight.w900,
-              fontSize: 20.0,
-            ),
-          ),    
+                  fontWeight: FontWeight.w900,
+                  fontSize: 20.0,
+                ),
+          ),
         ),
       ),
     );
   }
 
   Widget _buildInputsTab() {
-    return
-    SingleChildScrollView(
+    return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -162,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage>
                 //theme: ModernTextFieldTheme.dark,
                 labelText: 'Name',
                 hintText: 'Your first name',
-                prefixIcon: Icon(Icons.person_sharp), 
+                prefixIcon: Icon(Icons.person_sharp),
                 controller: null,
                 textInputAction: TextInputAction.next,
               ),
@@ -181,14 +192,14 @@ class _MyHomePageState extends State<MyHomePage>
                   _isPasswordVisible = !_isPasswordVisible;
                 }),
                 suffixIcon: _isPasswordVisible
-                ? Icon(
-                    Icons.visibility,
-                    color: Colors.grey,
-                  )
-                : Icon(
-                    Icons.visibility_off,
-                    color: Colors.grey,
-                  ),
+                    ? Icon(
+                        Icons.visibility,
+                        color: Colors.grey,
+                      )
+                    : Icon(
+                        Icons.visibility_off,
+                        color: Colors.grey,
+                      ),
               ),
             ),
             Padding(
@@ -238,57 +249,49 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   Widget _buildButtonsTab() {
-    return
-    SingleChildScrollView(
+    return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 22.0,
-                horizontal: 8.0
-              ),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 22.0, horizontal: 8.0),
               child: ModernButton(
                 onPressed: () {
-                  setState((){
+                  setState(() {
                     _isFabVisible = !_isFabVisible;
                   });
                 },
-                text: _isFabVisible 
-                  ? 'Hide Corner Button'
-                  : 'Show Corner Button',
+                text:
+                    _isFabVisible ? 'Hide Corner Button' : 'Show Corner Button',
                 fontWeight: FontWeight.bold,
                 icon: Icon(
-                  _isFabVisible 
-                  ? Icons.visibility
-                  : Icons.visibility_off,
+                  _isFabVisible ? Icons.visibility : Icons.visibility_off,
                   color: Colors.white,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 22.0,
-                horizontal: 8.0
-              ),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 22.0, horizontal: 8.0),
               child: ModernButton(
                 onPressed: (!_isFabExpanded && !_isFabVisible)
-                  ? null
-                  : () {
-                    setState((){
-                      _isFabExpanded = !_isFabExpanded;
-                    });
-                  },
-                text: _isFabExpanded 
-                  ? 'Collapse Corner Button'
-                  : 'Expand Corner Button',
+                    ? null
+                    : () {
+                        setState(() {
+                          _isFabExpanded = !_isFabExpanded;
+                        });
+                      },
+                text: _isFabExpanded
+                    ? 'Collapse Corner Button'
+                    : 'Expand Corner Button',
                 fontWeight: FontWeight.bold,
                 icon: Icon(
                   _isFabExpanded
-                  ? Icons.arrow_forward_rounded
-                  : Icons.arrow_back_rounded,
+                      ? Icons.arrow_forward_rounded
+                      : Icons.arrow_back_rounded,
                   color: Colors.white,
                 ),
               ),
@@ -300,15 +303,11 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   Widget _buildSnackbarTab() {
-    return
-    Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 22.0,
-            horizontal: 8.0
-          ),
+          padding: const EdgeInsets.symmetric(vertical: 22.0, horizontal: 8.0),
           child: ModernButton(
             onPressed: () => _showSnackbar(),
             text: 'Test Snackbar',
@@ -320,26 +319,22 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   Widget _buildSelectorsTab() {
-    return
-    Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 22.0,
-            horizontal: 0.0
-          ),
-          child: ModernSelector(
-            items: selectorItems,
-            selectedItem: selectedItem,
-            labelText: 'Select an option',
-            onChange: (selected) {
-              setState(() {
-                selectedItem = selected;
-              });
-            },
-          )
-        ),
+            padding:
+                const EdgeInsets.symmetric(vertical: 22.0, horizontal: 0.0),
+            child: ModernSelector(
+              items: selectorItems,
+              selectedItem: selectedItem,
+              labelText: 'Select an option',
+              onChange: (selected) {
+                setState(() {
+                  selectedItem = selected;
+                });
+              },
+            )),
       ),
     );
   }
@@ -348,15 +343,14 @@ class _MyHomePageState extends State<MyHomePage>
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Counter(
-        color: Colors.pinkAccent,
-        initialValue: 1,
-        min: 1,
-        max: 10,
-        vibrate: true,
-        onChange: (value) => setState((){
-          print('Stepper Counter: $value');
-        })
-      ),
+          color: Colors.pinkAccent,
+          initialValue: 1,
+          min: 1,
+          max: 10,
+          vibrate: true,
+          onChange: (value) => setState(() {
+                print('Stepper Counter: $value');
+              })),
     );
   }
 
@@ -372,12 +366,12 @@ class _MyHomePageState extends State<MyHomePage>
         body: Stack(
           children: [
             ScrollConfiguration(
-              behavior: BehaviorWithoutGlow(),
-              child: CustomScrollView(
-                physics: NeverScrollableScrollPhysics(),
-                slivers: [
-                  SliverFillRemaining(
-                    child: IntrinsicHeight(
+                behavior: BehaviorWithoutGlow(),
+                child: CustomScrollView(
+                  physics: NeverScrollableScrollPhysics(),
+                  slivers: [
+                    SliverFillRemaining(
+                        child: IntrinsicHeight(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.max,
@@ -400,11 +394,9 @@ class _MyHomePageState extends State<MyHomePage>
                           )
                         ],
                       ),
-                    )
-                  )
-                ],
-              )
-            ),
+                    ))
+                  ],
+                )),
             CornerButton(
               isVisible: _isFabVisible,
               isExpanded: _isFabExpanded,
@@ -412,23 +404,16 @@ class _MyHomePageState extends State<MyHomePage>
               collapsedContent: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(
-                    Icons.arrow_forward_rounded,
-                    color: Colors.white,
-                    size: 28.0
-                  ),
+                  Icon(Icons.arrow_forward_rounded,
+                      color: Colors.white, size: 28.0),
                   SizedBox(
                     width: 35.0,
                   )
                 ],
               ),
-              expandedContent: Text(
-                'Confirm',
-                style: Theme.of(context).textTheme.button!.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold
-                )
-              ),            
+              expandedContent: Text('Confirm',
+                  style: Theme.of(context).textTheme.button!.copyWith(
+                      color: Colors.white, fontWeight: FontWeight.bold)),
             )
           ],
         ),
