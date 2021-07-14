@@ -1,3 +1,7 @@
+## 0.1.17
+
+* Fixes on ModernSelectDialog
+
 ## 0.1.16
 
 * Improved ModernSnackBar

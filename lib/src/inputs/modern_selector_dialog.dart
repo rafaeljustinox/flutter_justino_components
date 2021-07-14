@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:justino_components/justino_components.dart';
 import 'package:justino_components/src/inputs/modern_selector_item.dart';
 
 // ignore: must_be_immutable
@@ -52,16 +53,73 @@ class _ModernSelectorDialogState extends State<ModernSelectorDialog> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0)
       ),
+      titlePadding: EdgeInsets.all(0),
       title: widget.title != null
       ? Container(
-        color: Theme.of(context).dialogBackgroundColor,
+        decoration: BoxDecoration(
+          color: Theme.of(context).dialogBackgroundColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(12.0),
+            topRight: Radius.circular(12.0),
+          )
+        ),
+        padding: EdgeInsets.only(top: 24.0, left: 24.0, right: 24.0, bottom: 12.0),
         child: Text(
           widget.title!,
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(
+            fontWeight: FontWeight.bold
+          ),
         ),
       )
       : null,
-      content: Container(
+      content: ScrollConfiguration(
+        behavior: BehaviorWithoutGlow(),
+        child: SingleChildScrollView(
+          child: ListBody(
+            children: widget.items.map((item) {
+              return Container(
+                //width: 300,
+                //height: 54,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Ink(
+                  decoration: BoxDecoration(
+                    //borderRadius: BorderRadius.circular(12.0),
+                    color: selectedItem.id == item.id
+                    ? Theme.of(context).hoverColor
+                    : Theme.of(context).dialogBackgroundColor,
+                  ),
+                  child: item.subtitle != null 
+                  ? ListTile(
+                      onTap: () {
+                        _onOptionSelected(item);
+                      },
+                      leading: item.leading,
+                      title: Text(
+                        item.title,
+                        style: Theme.of(context).textTheme.bodyText1
+                      ),
+                      subtitle: Text(item.subtitle!),
+                    )
+                  : ListTile(
+                      onTap: () {
+                        _onOptionSelected(item);
+                      },
+                      leading: item.leading,
+                      title: Text(
+                        item.title,
+                        style: Theme.of(context).textTheme.bodyText1
+                      ),
+                    )
+                ),
+              );
+            }).toList()
+          ),
+        ),
+      ),
+
+      /* content: Container(
         //width: 300,
         //height: 140,
         child: ListView(
@@ -80,7 +138,7 @@ class _ModernSelectorDialogState extends State<ModernSelectorDialog> {
                   //borderRadius: BorderRadius.circular(12.0),
                   color: selectedItem.id == item.id
                   ? Theme.of(context).hoverColor
-                  : Theme.of(context).cardColor,
+                  : Theme.of(context).dialogBackgroundColor,
                 ),
                 child: item.subtitle != null 
                 ? ListTile(
@@ -108,7 +166,7 @@ class _ModernSelectorDialogState extends State<ModernSelectorDialog> {
             );
           }).toList(),
         )
-      ),
+      ), */
     );
   }
 }
