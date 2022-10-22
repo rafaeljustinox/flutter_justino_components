@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-enum CounterAction {
-  decrease,
-  increase
-}
+enum CounterAction { decrease, increase }
 
 class Counter extends StatefulWidget {
   final Function? onChange;
@@ -14,35 +11,28 @@ class Counter extends StatefulWidget {
   final bool? vibrate;
   final Color? color;
 
-  const Counter({
-    Key? key,
-    this.onChange,
-    this.initialValue,
-    this.min,
-    this.max,
-    this.vibrate,
-    this.color
-  }) : super(key: key);
-  
+  const Counter(
+      {Key? key,
+      this.onChange,
+      this.initialValue,
+      this.min,
+      this.max,
+      this.vibrate,
+      this.color})
+      : super(key: key);
+
   @override
   _CounterState createState() => _CounterState(
-    color: this.color,
-    initialValue: this.initialValue,
-    min: this.min,
-    max: this.max,
-    vibrate: this.vibrate
-  );
+      color: this.color,
+      initialValue: this.initialValue,
+      min: this.min,
+      max: this.max,
+      vibrate: this.vibrate);
 }
 
 class _CounterState extends State<Counter> {
-
-  _CounterState({
-    this.initialValue,
-    this.min,
-    this.max,
-    this.vibrate,
-    this.color
-  });
+  _CounterState(
+      {this.initialValue, this.min, this.max, this.vibrate, this.color});
 
   final int? initialValue;
   final int? min;
@@ -98,7 +88,6 @@ class _CounterState extends State<Counter> {
   }
 
   Function? _handleActionPressed(CounterAction action) {
-
     if (action == CounterAction.decrease) {
       return _canDecrease ? _decrease : null;
     } else {
@@ -107,7 +96,6 @@ class _CounterState extends State<Counter> {
   }
 
   Widget _buildActionIcon(CounterAction action) {
-
     if (action == CounterAction.decrease) {
       return Icon(
         //Icons.navigate_before,
@@ -146,15 +134,14 @@ class _CounterState extends State<Counter> {
       onLongPressStart: (_) => _onLongPressStart(action),
       onLongPressEnd: (_) => _onLongPressEnd(),
       child: ElevatedButton(
-        style:  ElevatedButton.styleFrom(
-          elevation: 4.0,
-          padding: EdgeInsets.all(10.0),
-          shape: CircleBorder(),
-          primary: color,
-        ),
-        onPressed: _handleActionPressed(action) as void Function()?,
-        child: _buildActionIcon(action)
-      ),
+          style: ElevatedButton.styleFrom(
+            elevation: 4.0,
+            padding: EdgeInsets.all(10.0),
+            shape: CircleBorder(),
+            backgroundColor: color,
+          ),
+          onPressed: _handleActionPressed(action) as void Function()?,
+          child: _buildActionIcon(action)),
     );
   }
 
@@ -166,48 +153,43 @@ class _CounterState extends State<Counter> {
       children: [
         //Text('Cópias'),
         SizedBox(
-          width: 100,
-          child: Material(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(14)),
-                border: Border.all(
-                  width: 2.0,
-                  color: Colors.grey.shade300,
+            width: 100,
+            child: Material(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(14)),
+                  border: Border.all(
+                    width: 2.0,
+                    color: Colors.grey.shade300,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(_counter.toString(),
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4!
+                          .copyWith(color: Colors.black, fontSize: 26)),
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  _counter.toString(),
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline4!.copyWith(
-                    color: Colors.black,
-                    fontSize: 26
-                  )
-                ),
-              ),
-            ),
-          )
-        ),
+            )),
       ],
     );
   }
 
   Widget _buildCounter() {
-    return 
-    Container(
-      child: ButtonBar(
-        alignment: MainAxisAlignment.center,
-        children: [
-          _buildActionButton(CounterAction.decrease),
-          _buildCounterDisplay(),
-          _buildActionButton(CounterAction.increase)
-        ],
-      )
-    );
+    return Container(
+        child: ButtonBar(
+      alignment: MainAxisAlignment.center,
+      children: [
+        _buildActionButton(CounterAction.decrease),
+        _buildCounterDisplay(),
+        _buildActionButton(CounterAction.increase)
+      ],
+    ));
   }
-  
+
   @override
   void initState() {
     if (initialValue != null) {

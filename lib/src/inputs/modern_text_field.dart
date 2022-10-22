@@ -327,7 +327,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.0),
                   borderSide: BorderSide(
-                    color: Theme.of(context).accentColor,
+                    color: Theme.of(context).colorScheme.secondary,
                     width: 2.0
                   ),
                 ),

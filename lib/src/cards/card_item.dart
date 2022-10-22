@@ -4,33 +4,39 @@ import 'package:flutter/material.dart';
 /// the item's value. The text is displayed in bright green if selected is true.
 /// This widget's height is based on the animation parameter, it varies
 /// from 0 to 128 as the animation varies from 0.0 to 1.0.
-class CardItem extends StatefulWidget  {
+class CardItem extends StatefulWidget {
   final Animation<double>? animation;
   final VoidCallback? onTap;
   final int? item;
   final bool? selected;
-  const CardItem({Key? key, this.animation, this.onTap, this.item, this.selected}) : super(key: key);
+  const CardItem({
+    Key? key,
+    this.animation,
+    this.onTap,
+    this.item,
+    this.selected,
+  }) : super(key: key);
 
   @override
-  _CardItemState createState() => _CardItemState(animation: this.animation!, item: this.item, onTap: this.onTap);
-  
+  _CardItemState createState() => _CardItemState(
+        animation: this.animation!,
+        item: this.item,
+        onTap: this.onTap,
+      );
 }
 
-class _CardItemState extends State<CardItem> with SingleTickerProviderStateMixin {
-
+class _CardItemState extends State<CardItem>
+    with SingleTickerProviderStateMixin {
   _CardItemState({
     required this.animation,
     this.onTap,
     this.item,
-    this.selected: false}
-  )
-  : assert(item != null && item >= 0);
-    //super(key: key);
+  }) : assert(item != null && item >= 0);
+  //super(key: key);
 
   final Animation<double> animation;
   final VoidCallback? onTap;
   final int? item;
-  final bool selected;
 
   late AnimationController _controller;
   late Animation<Offset> _offsetAnimation;
@@ -42,12 +48,10 @@ class _CardItemState extends State<CardItem> with SingleTickerProviderStateMixin
       duration: const Duration(seconds: 2),
       vsync: this,
     ); //..repeat(reverse: false);
-    _offsetAnimation = 
-    
-    Tween<Offset>(
+    _offsetAnimation = Tween<Offset>(
       begin: const Offset(1.5, 0.0),
       end: Offset.zero,
-    ).animate( CurvedAnimation(
+    ).animate(CurvedAnimation(
       parent: _controller,
       curve: Curves.easeInOutExpo,
     ));
@@ -63,7 +67,7 @@ class _CardItemState extends State<CardItem> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     TextStyle? textStyle = Theme.of(context).textTheme.headline4;
-    if (selected)
+    if (widget.selected != null && widget.selected!)
       textStyle = textStyle!.copyWith(color: Colors.lightGreenAccent[400]);
     return Padding(
       padding: const EdgeInsets.all(2.0),

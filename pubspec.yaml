@@ -1,6 +1,6 @@
 name: justino_components
 description: A pack with some fancy widgets like buttons, textfields, counters, snackbars and more.
-version: 0.1.18
+version: 1.0.0
 homepage: https://github.com/rafaeljustinox/flutter_justino_components
 
 environment:

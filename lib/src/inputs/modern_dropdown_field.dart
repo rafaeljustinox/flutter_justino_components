@@ -7,7 +7,6 @@ enum ModernDropdownFieldTheme {
 }
 
 class ModernDropdownField extends StatefulWidget {
-
   final Icon? prefixIcon;
   final List<dynamic>? items;
   final dynamic initialValue;
@@ -36,7 +35,6 @@ class ModernDropdownField extends StatefulWidget {
 }
 
 class _ModernDropdownFieldState extends State<ModernDropdownField> {
-
   EdgeInsetsGeometry _buildPadding() {
     double right = 16.0;
     double left = 16.0;
@@ -44,17 +42,17 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
     if (widget.prefixIcon != null) {
       left = 0.0;
     }
-    return 
-    EdgeInsets.only(
+    return EdgeInsets.only(
       left: left,
       right: right,
       top: 18.0,
       bottom: 18.0,
     );
   }
-  Color _buildHintTextColor() {
 
-    if (widget.theme == null || widget.theme == ModernDropdownFieldTheme.light) {
+  Color _buildHintTextColor() {
+    if (widget.theme == null ||
+        widget.theme == ModernDropdownFieldTheme.light) {
       return Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.4);
     } else {
       return Colors.white.withOpacity(0.4);
@@ -62,21 +60,20 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
   }
 
   Widget? _buildPrefixIcon() {
-    return 
-    widget.prefixIcon != null
-    ? Padding(
-        padding: EdgeInsets.only(
-          left: 16.0,
-          right: 14.0,
-        ),
-        child: widget.prefixIcon,
-      )
-    : null;
+    return widget.prefixIcon != null
+        ? Padding(
+            padding: EdgeInsets.only(
+              left: 16.0,
+              right: 14.0,
+            ),
+            child: widget.prefixIcon,
+          )
+        : null;
   }
-  
-  Color? _buildLabelTextColor() {
 
-    if (widget.theme == null || widget.theme == ModernDropdownFieldTheme.light) {
+  Color? _buildLabelTextColor() {
+    if (widget.theme == null ||
+        widget.theme == ModernDropdownFieldTheme.light) {
       return Theme.of(context).textTheme.bodyText1!.color;
     } else {
       return Colors.white;
@@ -84,19 +81,17 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
   }
 
   Widget _buildLabelText() {
-    return 
-    widget.labelText != null && widget.labelText!.isNotEmpty
-    ?  Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.0),
-        child: Text(
-          widget.labelText!,
-          style: Theme.of(context).textTheme.subtitle1!.copyWith(
-            fontWeight: widget.labelWeight != null ? widget.labelWeight : FontWeight.bold,
-            color: _buildLabelTextColor()
+    return widget.labelText != null && widget.labelText!.isNotEmpty
+        ? Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            child: Text(widget.labelText!,
+                style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                    fontWeight: widget.labelWeight != null
+                        ? widget.labelWeight
+                        : FontWeight.bold,
+                    color: _buildLabelTextColor())),
           )
-        ),
-      )
-    : SizedBox();
+        : SizedBox();
   }
 
   /* Color _buildFillColor() {
@@ -110,86 +105,79 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
   } */
 
   Color? _buildTextColor() {
-
-    if (widget.theme == null || widget.theme == ModernDropdownFieldTheme.light) {
+    if (widget.theme == null ||
+        widget.theme == ModernDropdownFieldTheme.light) {
       return Theme.of(context).textTheme.bodyText1!.color;
     } else {
       return Colors.white;
     }
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      alignment: WrapAlignment.start,
-      crossAxisAlignment: WrapCrossAlignment.start,
-      children: <Widget>[
-        _buildLabelText(),
-        Stack(
-          alignment: Alignment.topRight,
-          children: <Widget>[
+        alignment: WrapAlignment.start,
+        crossAxisAlignment: WrapCrossAlignment.start,
+        children: <Widget>[
+          _buildLabelText(),
+          Stack(alignment: Alignment.topRight, children: <Widget>[
             DropdownButtonFormField(
-              decoration: InputDecoration(
-                disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                  borderSide: BorderSide.none,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                  borderSide: BorderSide.none,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).accentColor,
-                    width: 2.0
+                decoration: InputDecoration(
+                  disabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                    borderSide: BorderSide.none,
                   ),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                  borderSide: BorderSide.none,
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).errorColor,
-                    width: 2.0
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                    borderSide: BorderSide.none,
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.secondary,
+                        width: 2.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).errorColor, width: 2.0),
+                  ),
+                  labelStyle: Theme.of(context).textTheme.bodyText1,
+                  alignLabelWithHint: false,
+                  filled: true,
+                  //fillColor: _buildFillColor(),
+                  contentPadding: _buildPadding(),
+                  hintStyle: Theme.of(context)
+                      .textTheme
+                      .bodyText1!
+                      .copyWith(color: _buildHintTextColor()),
+                  prefixIcon: _buildPrefixIcon(),
+                  isDense: true,
+                  errorStyle:
+                      TextStyle(color: Colors.redAccent, fontSize: 16.0),
+                  hintText: widget.hintText,
+                  border: InputBorder.none,
                 ),
-                labelStyle: Theme.of(context).textTheme.bodyText1,
-                alignLabelWithHint: false,
-                filled: true,
-                //fillColor: _buildFillColor(),
-                contentPadding: _buildPadding(),
-                hintStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
-                  color:_buildHintTextColor()
-                ),
-                prefixIcon: _buildPrefixIcon(),
-                isDense: true,
-                errorStyle: TextStyle(color: Colors.redAccent, fontSize: 16.0),
-                hintText: widget.hintText,
-                border: InputBorder.none,
-              ),
-              value: widget.initialValue,
-              icon: Icon(Icons.keyboard_arrow_down),
-              items: widget.items as List<DropdownMenuItem>?,
-              onChanged: widget.onChanged,
-              style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                height: 1.4,
-                fontWeight: widget.textWeight != null ? widget.textWeight : FontWeight.normal,
-                color: _buildTextColor()
-              )
-            )
-          ]
-        )
-      ]
-    );
+                value: widget.initialValue,
+                icon: Icon(Icons.keyboard_arrow_down),
+                items: widget.items as List<DropdownMenuItem>?,
+                onChanged: widget.onChanged,
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    height: 1.4,
+                    fontWeight: widget.textWeight != null
+                        ? widget.textWeight
+                        : FontWeight.normal,
+                    color: _buildTextColor()))
+          ])
+        ]);
   }
 }
 
 class ModernDropdownFieldItem<T> extends CustomDropdownMenuItem<T> {
-
   final T? value;
   final VoidCallback? onTap;
 

@@ -1,0 +1,19 @@
+{
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+      "source.fixAll": true
+    },
+  },
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  "files.watcherExclude": {
+    "**/.fvm": true
+  },
+  "dart.runPubGetOnPubspecChanges": true,
+  "dart.flutterGenerateLocalizationsOnSave": "all",
+  
+}

@@ -1,3 +1,6 @@
+## 1.0.0
+* Upgrade to Flutter 3.3.0
+
 ## 0.1.17
 
 * Fixes on ModernSelectDialog

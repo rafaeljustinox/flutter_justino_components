@@ -23,7 +23,6 @@ class CornerButton extends StatefulWidget {
 }
 
 class _CornerButtonState extends State<CornerButton> {
-
   Widget _buildCornerButton() {
     double right = 0.0;
     double bottom = 0.0;
@@ -42,8 +41,7 @@ class _CornerButtonState extends State<CornerButton> {
       }
     }
 
-    return 
-    AnimatedPositioned(
+    return AnimatedPositioned(
       bottom: bottom,
       right: right,
       width: width,
@@ -53,20 +51,18 @@ class _CornerButtonState extends State<CornerButton> {
         height: MediaQuery.of(context).size.height * 0.1,
         width: width,
         child: FloatingActionButton(
-          elevation: 0.0,
-          backgroundColor: Theme.of(context).accentColor,
-          shape: RoundedRectangleBorder(
-            borderRadius:  BorderRadius.circular(32.0)            
-          ),
-          onPressed: widget.onPressed as void Function()?,
-          child: _buildContent(widget.isVisible)
-        ),
+            elevation: 0.0,
+            backgroundColor: Theme.of(context).colorScheme.secondary,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(32.0)),
+            onPressed: widget.onPressed as void Function()?,
+            child: _buildContent(widget.isVisible)),
       ),
     );
   }
 
   Widget _buildContent(bool isExpanded) {
-    if (widget.isExpanded){
+    if (widget.isExpanded) {
       return Center(
         child: widget.expandedContent,
       );
