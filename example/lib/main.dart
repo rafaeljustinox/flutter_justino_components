@@ -109,9 +109,7 @@ class _MyHomePageState extends State<MyHomePage>
       bodyColor: Colors.grey,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(12.0)
-          ),
+        borderRadius: BorderRadius.all(Radius.circular(12.0)),
       ),
       action: SnackBarAction(
         label: 'Undo',
@@ -145,12 +143,12 @@ class _MyHomePageState extends State<MyHomePage>
                 color: Theme.of(context).primaryColor, radius: 4),
             unselectedLabelColor: Theme.of(context).disabledColor,
             unselectedLabelStyle:
-                Theme.of(context).textTheme.headline6!.copyWith(
+                Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.w900,
                       fontSize: 20.0,
                     ),
             labelColor: Theme.of(context).primaryColor,
-            labelStyle: Theme.of(context).textTheme.headline6!.copyWith(
+            labelStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.w900,
                   fontSize: 20.0,
                 ),
@@ -412,7 +410,7 @@ class _MyHomePageState extends State<MyHomePage>
                 ],
               ),
               expandedContent: Text('Confirm',
-                  style: Theme.of(context).textTheme.button!.copyWith(
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold)),
             )
           ],

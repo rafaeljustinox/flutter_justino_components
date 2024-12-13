@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../enums.dart';
 
 class ModernSnackbar {
@@ -6,12 +7,12 @@ class ModernSnackbar {
     required BuildContext context,
     required String title,
     String body = '',
-    ModernSnackbarType? type: ModernSnackbarType.info,
+    ModernSnackbarType? type = ModernSnackbarType.info,
     Color? backgroundColor,
     Color? titleColor,
     Color? bodyColor,
     SnackBarAction? action,
-    SnackBarBehavior? behavior: SnackBarBehavior.fixed,
+    SnackBarBehavior? behavior = SnackBarBehavior.fixed,
     Duration? duration = const Duration(seconds: 4),
     ShapeBorder? shape,
   }) {

@@ -7,7 +7,6 @@ enum ModernTextFieldTheme {
 }
 
 class ModernTextField extends StatefulWidget {
-
   final Key? key;
   final TextEditingController? controller;
   final String? initialValue;
@@ -26,8 +25,8 @@ class ModernTextField extends StatefulWidget {
   final TextDirection? textDirection;
   final TextAlign textAlign = TextAlign.start;
   final TextAlignVertical? textAlignVertical;
-  final bool autofocus;// = false;
-  final bool readOnly;//  = false;
+  final bool autofocus; // = false;
+  final bool readOnly; //  = false;
   final ToolbarOptions? toolbarOptions;
   final bool showCursor;
   final bool obscureText; // = false;
@@ -35,9 +34,9 @@ class ModernTextField extends StatefulWidget {
   final bool enableSuggestions; // = true;
   final AutovalidateMode autovalidateMode;
   final MaxLengthEnforcement maxLengthEnforcement; // = true;
-  final int maxLines;// = 1;
+  final int maxLines; // = 1;
   final int? minLines;
-  final bool expands;//  = false;
+  final bool expands; //  = false;
   final int? maxLength;
   final ValueChanged<String>? onChanged;
   final GestureTapCallback? onTap;
@@ -46,7 +45,7 @@ class ModernTextField extends StatefulWidget {
   final FormFieldSetter<String>? onSaved;
   final FormFieldValidator<String>? validator;
   final List<TextInputFormatter>? inputFormatters;
-  final bool enabled;// = true;
+  final bool enabled; // = true;
   final double cursorWidth = 2.0;
   final Radius? cursorRadius;
   final Color? cursorColor;
@@ -73,11 +72,9 @@ class ModernTextField extends StatefulWidget {
     this.strutStyle,
     this.textDirection,
     this.textAlignVertical,
-
     this.labelWeight,
     this.textWeight,
     this.theme,
-    
     this.toolbarOptions,
     this.showCursor = true,
     this.minLines,
@@ -98,21 +95,19 @@ class ModernTextField extends StatefulWidget {
     this.hintText,
     this.prefixIcon,
     this.suffixIcon,
-    
-    this.autofocus: false,
-    this.readOnly: false,
-    this.obscureText: false,
-    this.autocorrect: true,
-    this.enableSuggestions: true,
-    this.maxLengthEnforcement: MaxLengthEnforcement.enforced,
-    this.autovalidateMode: AutovalidateMode.disabled,
-    this.maxLines: 1,
-    this.expands: false,
-    this.enabled: true,
+    this.autofocus = false,
+    this.readOnly = false,
+    this.obscureText = false,
+    this.autocorrect = true,
+    this.enableSuggestions = true,
+    this.maxLengthEnforcement = MaxLengthEnforcement.enforced,
+    this.autovalidateMode = AutovalidateMode.disabled,
+    this.maxLines = 1,
+    this.expands = false,
+    this.enabled = true,
     this.onSuffixTap,
-    this.scrollPadding: const EdgeInsets.all(20.0),
-    this.textCapitalization: TextCapitalization.none,
-
+    this.scrollPadding = const EdgeInsets.all(20.0),
+    this.textCapitalization = TextCapitalization.none,
   }) : super(key: key);
 
   @override
@@ -120,7 +115,6 @@ class ModernTextField extends StatefulWidget {
 }
 
 class _ModernTextFieldState extends State<ModernTextField> {
-
   EdgeInsetsGeometry _buildPadding() {
     double right = 16.0;
     double left = 16.0;
@@ -131,8 +125,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
     if (widget.suffixIcon != null) {
       right = 0.0;
     }
-    return 
-    EdgeInsets.only(
+    return EdgeInsets.only(
       left: left,
       right: right,
       top: 18.0,
@@ -141,99 +134,82 @@ class _ModernTextFieldState extends State<ModernTextField> {
   }
 
   Widget _buildLabelText() {
-    return 
-    widget.labelText != null && widget.labelText!.isNotEmpty
-    ?  Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.0),
-        child: Text(
-          widget.labelText!,
-          style: Theme.of(context).textTheme.subtitle1!.copyWith(
-            fontWeight: widget.labelWeight != null ? widget.labelWeight : FontWeight.bold,
-            color: _buildLabelTextColor()
+    return widget.labelText != null && widget.labelText!.isNotEmpty
+        ? Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            child: Text(widget.labelText!,
+                style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                    fontWeight: widget.labelWeight != null
+                        ? widget.labelWeight
+                        : FontWeight.bold,
+                    color: _buildLabelTextColor())),
           )
-        ),
-      )
-    : SizedBox();
+        : SizedBox();
   }
 
   Widget? _buildPrefixIcon() {
-    return 
-    widget.prefixIcon != null
-    ? Padding(
-        padding: EdgeInsets.only(
-          left: 16.0,
-          right: 14.0,
-        ),
-        child: widget.prefixIcon,
-      )
-    : null;
+    return widget.prefixIcon != null
+        ? Padding(
+            padding: EdgeInsets.only(
+              left: 16.0,
+              right: 14.0,
+            ),
+            child: widget.prefixIcon,
+          )
+        : null;
   }
 
   Widget? _buildSuffixIcon() {
-
-    return 
-    widget.suffixIcon != null
-    ? Padding(
-        padding: EdgeInsets.only(right: 8.0),
-        child: ClipOval(
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: () {
-                if (widget.onSuffixTap != null) {
-                  widget.onSuffixTap!();
-                }
-              },
-              child: SizedBox(
-                width: 48.0,
-                height: 48.0,
-                child: widget.suffixIcon
+    return widget.suffixIcon != null
+        ? Padding(
+            padding: EdgeInsets.only(right: 8.0),
+            child: ClipOval(
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {
+                    if (widget.onSuffixTap != null) {
+                      widget.onSuffixTap!();
+                    }
+                  },
+                  child: SizedBox(
+                      width: 48.0, height: 48.0, child: widget.suffixIcon),
+                ),
               ),
-            ),
-          ),
-        )
-      )
-    : null;
+            ))
+        : null;
   }
 
   Color? _buildLabelTextColor() {
-
     if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
       return Theme.of(context).textTheme.bodyText1!.color;
     } else {
       return Colors.white;
     }
-    
   }
 
   Color _buildErrorTextColor() {
-
     if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
       return Colors.red;
     } else {
       return Colors.red.shade100;
     }
-    
   }
 
   Color _buildHintTextColor() {
-
     if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
       return Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.4);
     } else {
       return Colors.white.withOpacity(0.4);
     }
-    
   }
 
   Color? _buildTextColor() {
-
     if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
       return Theme.of(context).textTheme.bodyText1!.color;
     } else {
       return Colors.white;
     }
-
   }
 
   /* Color _buildFillColor() {
@@ -248,13 +224,11 @@ class _ModernTextFieldState extends State<ModernTextField> {
 
   @override
   Widget build(BuildContext context) {
-
     return Wrap(
       alignment: WrapAlignment.start,
       crossAxisAlignment: WrapCrossAlignment.start,
       children: <Widget>[
         _buildLabelText(),
-
         Stack(
           alignment: Alignment.topRight,
           children: <Widget>[
@@ -283,7 +257,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
               //cursorRadius: widget.cursorRadius,
               //cursorColor: widget.cursorColor,
               keyboardAppearance: Theme.of(context).brightness,
-            
+
               //buildCounter: widget.buildCounter,
               //autofocus: widget.autofocus,
               readOnly: widget.readOnly,
@@ -297,23 +271,26 @@ class _ModernTextFieldState extends State<ModernTextField> {
               enabled: widget.enabled,
               scrollPadding: widget.scrollPadding,
               style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                height: 1.4,
-                fontWeight: widget.textWeight != null ? widget.textWeight : FontWeight.normal,
-                color: _buildTextColor()
-              ),
+                  height: 1.4,
+                  fontWeight: widget.textWeight != null
+                      ? widget.textWeight
+                      : FontWeight.normal,
+                  color: _buildTextColor()),
               key: widget.key,
               decoration: InputDecoration(
                 hintText: widget.hintText,
                 errorText: widget.errorText,
-                errorStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
-                  color: _buildErrorTextColor()
-                ),
+                errorStyle: Theme.of(context)
+                    .textTheme
+                    .subtitle2!
+                    .copyWith(color: _buildErrorTextColor()),
                 filled: true,
                 //fillColor: _buildFillColor(),
                 contentPadding: _buildPadding(),
-                hintStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
-                  color:_buildHintTextColor()
-                ),
+                hintStyle: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(color: _buildHintTextColor()),
                 prefixIcon: _buildPrefixIcon(),
                 suffixIcon: _buildSuffixIcon(),
                 disabledBorder: OutlineInputBorder(
@@ -327,9 +304,8 @@ class _ModernTextFieldState extends State<ModernTextField> {
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.0),
                   borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.secondary,
-                    width: 2.0
-                  ),
+                      color: Theme.of(context).colorScheme.secondary,
+                      width: 2.0),
                 ),
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.0),
@@ -338,9 +314,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
                 focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.0),
                   borderSide: BorderSide(
-                    color: Theme.of(context).errorColor,
-                    width: 2.0
-                  ),
+                      color: Theme.of(context).errorColor, width: 2.0),
                 ),
               ),
             ),
@@ -348,9 +322,5 @@ class _ModernTextFieldState extends State<ModernTextField> {
         )
       ],
     );
-    
-    
-    
-    
   }
 }
