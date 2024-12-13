@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class OfflineWidget extends StatelessWidget {
-
   final Function? onPressed;
 
   const OfflineWidget({Key? key, this.onPressed}) : super(key: key);
@@ -16,23 +15,20 @@ class OfflineWidget extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(bottom:18.0),
+                padding: EdgeInsets.only(bottom: 18.0),
                 child: Icon(
                   Icons.network_check,
                   size: 64.0,
                   color: Colors.black26,
                 ),
               ),
-              Text(
-                'Você está offline. Verifique sua conexão',
-                style: Theme.of(context).textTheme.bodyText2
-              ),
+              Text('Você está offline. Verifique sua conexão',
+                  style: Theme.of(context).textTheme.bodyMedium),
               TextButton(
-                onPressed: onPressed != null ? onPressed as void Function()? : (){},
-                child: Text(
-                  'Tentar novamente',
-                  style: Theme.of(context).textTheme.bodyText2
-                ),
+                onPressed:
+                    onPressed != null ? onPressed as void Function()? : () {},
+                child: Text('Tentar novamente',
+                    style: Theme.of(context).textTheme.bodyMedium),
               )
             ],
           ),

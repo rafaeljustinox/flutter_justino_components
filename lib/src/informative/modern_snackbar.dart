@@ -50,7 +50,7 @@ class ModernSnackbar {
               child: Text(
                 title,
                 textAlign: TextAlign.start,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0,
                       color: titleColor,
@@ -63,7 +63,7 @@ class ModernSnackbar {
                 child: Text(
                   body,
                   textAlign: TextAlign.start,
-                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 14.0,
                         color: bodyColor,

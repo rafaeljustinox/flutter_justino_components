@@ -169,7 +169,7 @@ class _CounterState extends State<Counter> {
                       textAlign: TextAlign.center,
                       style: Theme.of(context)
                           .textTheme
-                          .headline4!
+                          .headlineMedium!
                           .copyWith(color: Colors.black, fontSize: 26)),
                 ),
               ),
@@ -180,7 +180,7 @@ class _CounterState extends State<Counter> {
 
   Widget _buildCounter() {
     return Container(
-        child: ButtonBar(
+        child: OverflowBar(
       alignment: MainAxisAlignment.center,
       children: [
         _buildActionButton(CounterAction.decrease),

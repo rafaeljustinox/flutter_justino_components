@@ -77,7 +77,7 @@ class _ModernSelectorState extends State<ModernSelector> {
         padding: EdgeInsets.symmetric(vertical: 8.0),
         child: Text(
           widget.labelText!,
-          style: Theme.of(context).textTheme.subtitle2!
+          style: Theme.of(context).textTheme.titleSmall!
         ),
       )
     : SizedBox();
@@ -119,7 +119,7 @@ class _ModernSelectorState extends State<ModernSelector> {
                     padding: const EdgeInsets.only(left: 12.0),
                     child: Text(
                       selectedItem.title,
-                      style: Theme.of(context).textTheme.bodyText1
+                      style: Theme.of(context).textTheme.bodyLarge
                     ),
                   ),
                 ),
@@ -127,7 +127,7 @@ class _ModernSelectorState extends State<ModernSelector> {
                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: Icon(
                     Icons.keyboard_arrow_down_rounded,
-                    color: Theme.of(context).textTheme.bodyText1!.color
+                    color: Theme.of(context).textTheme.bodyLarge!.color
                   ),
                 )
               ],

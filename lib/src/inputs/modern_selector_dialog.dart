@@ -61,7 +61,7 @@ class _ModernSelectorDialogState extends State<ModernSelectorDialog> {
                 widget.title!,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText1!
+                    .bodyLarge!
                     .copyWith(fontWeight: FontWeight.bold),
               ),
             )
@@ -91,7 +91,7 @@ class _ModernSelectorDialogState extends State<ModernSelectorDialog> {
                           },
                           leading: item.leading,
                           title: Text(item.title,
-                              style: Theme.of(context).textTheme.bodyText1),
+                              style: Theme.of(context).textTheme.bodyLarge),
                           subtitle: Text(item.subtitle!),
                         )
                       : ListTile(
@@ -100,7 +100,7 @@ class _ModernSelectorDialogState extends State<ModernSelectorDialog> {
                           },
                           leading: item.leading,
                           title: Text(item.title,
-                              style: Theme.of(context).textTheme.bodyText1),
+                              style: Theme.of(context).textTheme.bodyLarge),
                         )),
             );
           }).toList()),

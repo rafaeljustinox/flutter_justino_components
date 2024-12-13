@@ -15,18 +15,12 @@ class SectionTitle extends StatelessWidget {
     return Align(
       alignment: alignment,
       child: Padding(
-        padding: EdgeInsets.only(
-          top: 2,
-          bottom: 15,
-          left: 24.0,
-          right: 24.0
-        ),
-        child: Text(
-          title!,
-          style: Theme.of(context).textTheme.headline6!.copyWith(
-            fontWeight: FontWeight.w900
-          )
-        ),
+        padding: EdgeInsets.only(top: 2, bottom: 15, left: 24.0, right: 24.0),
+        child: Text(title!,
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge!
+                .copyWith(fontWeight: FontWeight.w900)),
       ),
     );
   }

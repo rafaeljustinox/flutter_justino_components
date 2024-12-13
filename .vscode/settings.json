@@ -4,9 +4,9 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit",
       "source.fixAll": "explicit"
-    },
+    }
   },
-  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "dart.flutterSdkPath": ".fvm/versions/3.24.3",
   "search.exclude": {
     "**/.fvm": true
   },
@@ -14,6 +14,5 @@
     "**/.fvm": true
   },
   "dart.runPubGetOnPubspecChanges": true,
-  "dart.flutterGenerateLocalizationsOnSave": "all",
-  
+  "dart.flutterGenerateLocalizationsOnSave": "all"
 }

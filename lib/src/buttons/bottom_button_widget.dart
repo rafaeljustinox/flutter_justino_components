@@ -32,7 +32,7 @@ class BottomButtonWidget extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.1, //82.0,
                 child: Center(
                   child: Text(this.text!,
-                      style: Theme.of(context).textTheme.button!.copyWith(
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
                             color: Colors
                                 .white, //Theme.of(context).backgroundColor,
                           )),

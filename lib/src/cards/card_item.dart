@@ -66,7 +66,7 @@ class _CardItemState extends State<CardItem>
 
   @override
   Widget build(BuildContext context) {
-    TextStyle? textStyle = Theme.of(context).textTheme.headline4;
+    TextStyle? textStyle = Theme.of(context).textTheme.headlineMedium;
     if (widget.selected != null && widget.selected!)
       textStyle = textStyle!.copyWith(color: Colors.lightGreenAccent[400]);
     return Padding(

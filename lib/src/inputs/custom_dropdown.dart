@@ -85,8 +85,11 @@ class _DropdownScrollBehavior extends ScrollBehavior {
       Theme.of(context).platform;
 
   @override
-  Widget buildViewportChrome(
-          BuildContext context, Widget child, AxisDirection axisDirection) =>
+  Widget buildOverscrollIndicator(
+    BuildContext context,
+    Widget child,
+    ScrollableDetails details,
+  ) =>
       child;
 
   @override
@@ -1193,7 +1196,7 @@ class _DropdownButtonState<T> extends State<CustomDropdownButton<T>>
   }
 
   TextStyle? get _textStyle =>
-      widget.style ?? Theme.of(context).textTheme.subtitle1;
+      widget.style ?? Theme.of(context).textTheme.titleMedium;
 
   void _handleTap() {
     final RenderBox itemBox = context.findRenderObject() as RenderBox;
@@ -1259,7 +1262,7 @@ class _DropdownButtonState<T> extends State<CustomDropdownButton<T>>
   // would be clipped.
   double get _denseButtonHeight {
     final double fontSize = _textStyle!.fontSize ??
-        Theme.of(context).textTheme.subtitle1!.fontSize!;
+        Theme.of(context).textTheme.titleMedium!.fontSize!;
     return math.max(fontSize, math.max(widget.iconSize, _kDenseButtonHeight));
   }
 
@@ -1349,9 +1352,10 @@ class _DropdownButtonState<T> extends State<CustomDropdownButton<T>>
       hintIndex = items.length;
       items.add(DefaultTextStyle(
         style: _textStyle!.copyWith(color: Theme.of(context).hintColor),
-        child: IgnorePointer(
-          ignoringSemantics: false,
-          child: displayedHint,
+        child: ExcludeSemantics(
+          child: IgnorePointer(
+            child: displayedHint,
+          ),
         ),
       ));
     }

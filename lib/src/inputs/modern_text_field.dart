@@ -27,7 +27,6 @@ class ModernTextField extends StatefulWidget {
   final TextAlignVertical? textAlignVertical;
   final bool autofocus; // = false;
   final bool readOnly; //  = false;
-  final ToolbarOptions? toolbarOptions;
   final bool showCursor;
   final bool obscureText; // = false;
   final bool autocorrect; // = true;
@@ -75,7 +74,6 @@ class ModernTextField extends StatefulWidget {
     this.labelWeight,
     this.textWeight,
     this.theme,
-    this.toolbarOptions,
     this.showCursor = true,
     this.minLines,
     this.maxLength,
@@ -138,7 +136,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
         ? Padding(
             padding: EdgeInsets.symmetric(vertical: 8.0),
             child: Text(widget.labelText!,
-                style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     fontWeight: widget.labelWeight != null
                         ? widget.labelWeight
                         : FontWeight.bold,
@@ -182,7 +180,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
 
   Color? _buildLabelTextColor() {
     if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1!.color;
+      return Theme.of(context).textTheme.bodyLarge!.color;
     } else {
       return Colors.white;
     }
@@ -198,7 +196,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
 
   Color _buildHintTextColor() {
     if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.4);
+      return Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(0.4);
     } else {
       return Colors.white.withOpacity(0.4);
     }
@@ -206,7 +204,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
 
   Color? _buildTextColor() {
     if (widget.theme == null || widget.theme == ModernTextFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1!.color;
+      return Theme.of(context).textTheme.bodyLarge!.color;
     } else {
       return Colors.white;
     }
@@ -270,7 +268,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
               expands: widget.expands,
               enabled: widget.enabled,
               scrollPadding: widget.scrollPadding,
-              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   height: 1.4,
                   fontWeight: widget.textWeight != null
                       ? widget.textWeight
@@ -282,14 +280,14 @@ class _ModernTextFieldState extends State<ModernTextField> {
                 errorText: widget.errorText,
                 errorStyle: Theme.of(context)
                     .textTheme
-                    .subtitle2!
+                    .titleSmall!
                     .copyWith(color: _buildErrorTextColor()),
                 filled: true,
                 //fillColor: _buildFillColor(),
                 contentPadding: _buildPadding(),
                 hintStyle: Theme.of(context)
                     .textTheme
-                    .bodyText1!
+                    .bodyLarge!
                     .copyWith(color: _buildHintTextColor()),
                 prefixIcon: _buildPrefixIcon(),
                 suffixIcon: _buildSuffixIcon(),
@@ -314,7 +312,7 @@ class _ModernTextFieldState extends State<ModernTextField> {
                 focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.0),
                   borderSide: BorderSide(
-                      color: Theme.of(context).errorColor, width: 2.0),
+                      color: Theme.of(context).colorScheme.error, width: 2.0),
                 ),
               ),
             ),

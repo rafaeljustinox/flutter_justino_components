@@ -144,15 +144,17 @@ class _CountupAnimatedText extends AnimatedWidget {
                     .value
                     .toStringAsFixed(precision)
                     .replaceAllMapped(
-                        reg, (Match match) => '${match[1]}$separator') + '$suffix'
-            : '$prefix' + this.animation.value.toStringAsFixed(precision) + '$suffix',
+                        reg, (Match match) => '${match[1]}$separator') +
+                '$suffix'
+            : '$prefix' +
+                this.animation.value.toStringAsFixed(precision) +
+                '$suffix',
         style: this.style,
         textAlign: this.textAlign,
         textDirection: this.textDirection,
         locale: this.locale,
         softWrap: this.softWrap,
         overflow: this.overflow,
-        textScaleFactor: this.textScaleFactor,
         maxLines: this.maxLines,
         semanticsLabel: this.semanticsLabel,
       );

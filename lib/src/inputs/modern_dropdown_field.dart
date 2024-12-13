@@ -53,7 +53,7 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
   Color _buildHintTextColor() {
     if (widget.theme == null ||
         widget.theme == ModernDropdownFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.4);
+      return Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(0.4);
     } else {
       return Colors.white.withOpacity(0.4);
     }
@@ -74,7 +74,7 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
   Color? _buildLabelTextColor() {
     if (widget.theme == null ||
         widget.theme == ModernDropdownFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1!.color;
+      return Theme.of(context).textTheme.bodyLarge!.color;
     } else {
       return Colors.white;
     }
@@ -85,7 +85,7 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
         ? Padding(
             padding: EdgeInsets.symmetric(vertical: 8.0),
             child: Text(widget.labelText!,
-                style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     fontWeight: widget.labelWeight != null
                         ? widget.labelWeight
                         : FontWeight.bold,
@@ -107,7 +107,7 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
   Color? _buildTextColor() {
     if (widget.theme == null ||
         widget.theme == ModernDropdownFieldTheme.light) {
-      return Theme.of(context).textTheme.bodyText1!.color;
+      return Theme.of(context).textTheme.bodyLarge!.color;
     } else {
       return Colors.white;
     }
@@ -144,16 +144,16 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.0),
                     borderSide: BorderSide(
-                        color: Theme.of(context).errorColor, width: 2.0),
+                        color: Theme.of(context).colorScheme.error, width: 2.0),
                   ),
-                  labelStyle: Theme.of(context).textTheme.bodyText1,
+                  labelStyle: Theme.of(context).textTheme.bodyLarge,
                   alignLabelWithHint: false,
                   filled: true,
                   //fillColor: _buildFillColor(),
                   contentPadding: _buildPadding(),
                   hintStyle: Theme.of(context)
                       .textTheme
-                      .bodyText1!
+                      .bodyLarge!
                       .copyWith(color: _buildHintTextColor()),
                   prefixIcon: _buildPrefixIcon(),
                   isDense: true,
@@ -166,7 +166,7 @@ class _ModernDropdownFieldState extends State<ModernDropdownField> {
                 icon: Icon(Icons.keyboard_arrow_down),
                 items: widget.items as List<DropdownMenuItem>?,
                 onChanged: widget.onChanged,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     height: 1.4,
                     fontWeight: widget.textWeight != null
                         ? widget.textWeight

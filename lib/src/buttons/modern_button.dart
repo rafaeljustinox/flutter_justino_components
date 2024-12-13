@@ -38,8 +38,11 @@ class ModernButton extends StatelessWidget {
                       onPressed: onPressed,
                       icon: icon!,
                       label: Text(text!,
-                          style: Theme.of(context).textTheme.button!.copyWith(
-                              color: Colors.white, fontWeight: fontWeight)),
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge!
+                              .copyWith(
+                                  color: Colors.white, fontWeight: fontWeight)),
                     )
                   : ElevatedButton(
                       style: TextButton.styleFrom(
@@ -54,8 +57,11 @@ class ModernButton extends StatelessWidget {
                       ),
                       onPressed: onPressed,
                       child: Text(text!,
-                          style: Theme.of(context).textTheme.button!.copyWith(
-                              color: Colors.white, fontWeight: fontWeight)),
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge!
+                              .copyWith(
+                                  color: Colors.white, fontWeight: fontWeight)),
                     )),
         )
       ],
